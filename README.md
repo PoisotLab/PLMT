@@ -3,6 +3,9 @@
 This template is a way to make writing academic papers using `pandoc` and
 `markdown` simple.
 
+To compile in draft mode, use `make`; to compile in preprint mode, use `make
+TYPE=preprint`. That's it.
+
 ## What do you get?
 
 - `critic.sh` -- a shell script that will transform *CriticMarkup* into the commands used by LaTeX `trackchanges.sty`
@@ -26,7 +29,6 @@ This template is a way to make writing academic papers using `pandoc` and
 
 ## Plans
 
-- add a `preprint` mode to make *good looking* preprints
 - something something tables?
 
 ## Unknown bugs

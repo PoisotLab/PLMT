@@ -26,6 +26,15 @@ $endif$
 \usepackage{color}
 \newcommand{\hilight}[1]{\colorbox{yellow}{#1}}
 
+$if(author)$
+$for(author)$
+$if(author.id)$
+\addeditor{author.id}
+$endif$
+$endfor$
+$endif$
+
+
 \usepackage[letterpaper]{geometry}
 \geometry{margin=2.5cm}
 

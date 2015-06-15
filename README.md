@@ -5,7 +5,7 @@ This template is a way to make writing academic papers using `pandoc` and
 
 ## What do you get?
 
-- `critic.pl` -- a perl script that will transform *CriticMarkup* into the commands used by LaTeX `trackchanges.sty`
+- `critic.sh` -- a shell script that will transform *CriticMarkup* into the commands used by LaTeX `trackchanges.sty`
 - `Makefile` -- just type `make`, boom, PDF
 - `plmt.tex` -- the LaTeX template
 - `trackchanges.sty` -- the LaTeX style file for track changes (released under the *GPL v2.0*!)
@@ -17,11 +17,12 @@ This template is a way to make writing academic papers using `pandoc` and
 - `pandoc` (> 1.13, if not the arrays in `YAML` won't render)
 - a (relatively well furnished) LaTeX distribution
 - `perl`
+- `make`
 - an idea for a manuscript
 
 ## Known bugs
 
-- `critic.pl` chokes on multi-line CriticMarks
+- There may be issues when several annotated sentences are on the same line
 
 ## Plans
 

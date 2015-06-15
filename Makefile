@@ -8,10 +8,11 @@ PHONY: all
 
 all: $(OUTPUT)
 
+clean:
+	rm marked_$(SOURCE)
+
 $(OUTPUT): $(SOURCE)
 	# Critic markup
-	perl critic.pl $< > marked_$(SOURCE)
+	./critic.sh $< marked_$(SOURCE)
 	# Compile
 	pandoc marked_$(SOURCE) -o $@ $(PFLAGS)
-	# Clean
-	rm marked_$(SOURCE)

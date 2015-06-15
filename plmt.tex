@@ -68,10 +68,15 @@ $if(preprint)$\geometry{margin=1.7cm}$endif$
 $if(preprint)$
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\fancyhead[LO,RE]{\slshape $if(short)$$short$$endif$}
+\fancyhead[LO,RE]{$if(short)$\small\textbf{Preprint:}\slshape\,$short$$endif$}
 \fancyhead[LE,RO]{}
 \fancyfoot[C]{}
 \fancyfoot[LE,RO]{Page \thepage}
+$endif$
+
+$if(draft)$
+\usepackage{lineno}
+\linenumbers
 $endif$
 
 \providecommand{\tightlist}{%

@@ -1,8 +1,7 @@
 SOURCE=ms.md
 OUTPUT=ms.pdf
-#BIB=/path/to/wherever.bib
-#CSL=/path/to/wherever.csl
-PFLAGS= --template plmt.tex #--bibliography=$(BIB) --csl=$(CSL)
+TYPE=draft # alt. value: preprint
+PFLAGS= --template plmt.tex --variable=$(TYPE) --filter pandoc-citeproc
 
 PHONY: all
 

@@ -1,6 +1,11 @@
-\documentclass[12pt,letterpaper]{article}
+$if(draft)$\documentclass[12pt]{article}$endif$
+$if(preprint)$\documentclass[10pt]{article}$endif$
 
 \usepackage[hidelinks]{hyperref}
+
+$if(preprint)$
+\usepackage{multicol}
+$endif$
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -22,9 +27,17 @@ $endif$
 \usepackage{setspace}
 
 % Track changes
+$if(draft)$
 \usepackage[inline]{trackchanges}
 \usepackage{color}
 \newcommand{\hilight}[1]{\colorbox{yellow}{#1}}
+$endif$
+
+$if(preprint)$
+\usepackage[finalnew]{trackchanges}
+\usepackage{color}
+\newcommand{\hilight}[1]{\colorbox{yellow}{#1}}
+$endif$
 
 $if(author)$
 $for(author)$
@@ -34,9 +47,32 @@ $endif$
 $endfor$
 $endif$
 
+$if(preprint)$
+\setcounter{secnumdepth}{0}
+\makeatletter
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-2.5ex \@plus -1ex \@minus -.2ex}%
+                                   {0.1ex \@plus.1ex}%
+                                   {\sffamily\bfseries}}
+\renewcommand\subsection{\@startsection {subsection}{1}{\z@}%
+                                   {-2.5ex \@plus -1ex \@minus -.2ex}%
+                                   {0.1ex \@plus.1ex}%
+                                   {\rmfamily\bfseries}}
+\makeatother
+$endif$
 
 \usepackage[letterpaper]{geometry}
-\geometry{margin=2.5cm}
+$if(draft)$\geometry{margin=2.5cm}$endif$
+$if(preprint)$\geometry{margin=1.7cm}$endif$
+
+$if(preprint)$
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[LO,RE]{\slshape $if(short)$$short$$endif$}
+\fancyhead[LE,RO]{}
+\fancyfoot[C]{}
+\fancyfoot[LE,RO]{Page \thepage}
+$endif$
 
 \providecommand{\tightlist}{%
 	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -80,12 +116,12 @@ $endfor$
 \bigskip
 $endif$
 
+$if(draft)$
 $if(abstract)$
 {\small
 \textbf{Abstract: }$abstract$
-}
+}\\
 $endif$
-
 $if(keyword)$
 {\small
 \textbf{Keywords:}
@@ -93,6 +129,7 @@ $for(keyword)$
   $keyword.k$ \,\,\,\,\,\,\,\,\,\,
 $endfor$
 }
+$endif$
 $endif$
 
 $if(date)$
@@ -102,13 +139,30 @@ $date$
 }
 $endif$
 
+$if(draft)$
 \clearpage
-
 \doublespacing
+$endif$
 
+$if(preprint)$\bigskip\begin{multicols}{2}
+$if(abstract)$
+{\small\sffamily\bfseries $abstract$}\\
+$endif$
+$if(keyword)$
+{\small
+\textbf{Keywords:}
+$for(keyword)$
+  $keyword.k$ \,\,\,\,\,\,\,\,\,\,
+$endfor$\vskip 3em
+}
+$endif$
+$endif$
 $body$
+$if(preprint)$\end{multicols}$endif$
 
+$if(draft)$
 \singlespacing
+$endif$
 
 $if(figure)$
 \clearpage
@@ -118,7 +172,8 @@ $for(figure)$
 \begin{figure}[p!]
   \centering
   \includegraphics[width=\textwidth]{$figure.file$}
-	\caption{$figure.caption$\label{$figure.label$}}
+	\caption$if(figure.short)$[$figure.short$]$endif${$figure.caption$}
+	\label{$figure.id$}
 \end{figure}
 \cleardoublepage
 $endfor$

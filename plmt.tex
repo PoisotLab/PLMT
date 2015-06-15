@@ -1,0 +1,106 @@
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage[hidelinks]{hyperref}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+$if(figure)$
+\usepackage{graphicx}
+$endif$
+
+% STIX for the text
+\usepackage{stix}
+
+% Inconsolata for the code
+\usepackage{inconsolata}
+
+% Helvetica for the titles
+\usepackage[scaled]{helvet}
+
+% Spacing
+\usepackage{setspace}
+
+% Track changes
+\usepackage[inline]{trackchanges}
+\usepackage{color}
+\newcommand{\hilight}[1]{\colorbox{yellow}{#1}}
+
+\usepackage[letterpaper]{geometry}
+\geometry{margin=2.5cm}
+
+\providecommand{\tightlist}{%
+	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\begin{document}
+
+\setlength{\parskip}{1em}
+\setlength{\parindent}{0pt}
+
+$if(title)$
+{\Large\bfseries\sffamily $title$}
+\vskip 2em
+$endif$
+
+
+$if(author)$
+$for(author)$
+$author.given$ $author.family$ $$^{$author.affiliation$ $if(author.email)$,\ast$endif$}$$$sep$, %\\
+$endfor$
+\bigskip
+$endif$
+
+$if(affiliation)$
+\small
+$for(affiliation)$
+($affiliation.id$) $affiliation.text$\\
+$endfor$
+\bigskip
+\normalsize
+$endif$
+
+$if(author)$
+$for(author)$
+$if(author.email)$ $$\ast$$ e-mail: \texttt{$author.email$}$endif$
+$endfor$
+\bigskip
+$endif$
+
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+
+$if(keyword)$
+{\small
+\textbf{Keywords:}
+$for(keyword)$
+  $keyword.k$ \,\,\,\,\,\,\,\,\,\,
+$endfor$
+}
+$endif$
+
+\clearpage
+
+\doublespacing
+
+$body$
+
+\singlespacing
+
+$if(figure)$
+\clearpage
+\listoffigures
+\clearpage
+$for(figure)$
+\begin{figure}[p!]
+  \centering
+  \includegraphics[width=\textwidth]{$figure.file$}
+	\caption{$figure.caption$\label{$figure.label$}}
+\end{figure}
+\cleardoublepage
+$endfor$
+$endif$
+
+\end{document}

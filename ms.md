@@ -6,6 +6,7 @@ author:
     affiliation: 1, 2
     email: tim@poisotlab.io
     id: tp
+    orcid: 0000-0002-0735-5184
   - family: Author
     given: Second
     affiliation: 2,3

@@ -54,7 +54,12 @@ $endif$
 
 $if(author)$
 $for(author)$
-$author.given$ $author.family$ $$^{$author.affiliation$ $if(author.email)$,\ast$endif$}$$$sep$, %\\
+$if(author.orcid)$
+\href{http://orcid.org/$author.orcid$}{$author.given$ $author.family$}
+$else$
+$author.given$ $author.family$
+$endif$
+$$^{$author.affiliation$ $if(author.email)$,\ast$endif$}$$$sep$, %\\
 $endfor$
 \bigskip
 $endif$
@@ -76,9 +81,9 @@ $endfor$
 $endif$
 
 $if(abstract)$
-\begin{abstract}
-$abstract$
-\end{abstract}
+{\small
+\textbf{Abstract: }$abstract$
+}
 $endif$
 
 $if(keyword)$
@@ -87,6 +92,13 @@ $if(keyword)$
 $for(keyword)$
   $keyword.k$ \,\,\,\,\,\,\,\,\,\,
 $endfor$
+}
+$endif$
+
+$if(date)$
+{\small
+\textbf{Date: }
+$date$
 }
 $endif$
 

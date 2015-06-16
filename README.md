@@ -20,6 +20,7 @@ Almost. There are two differences:
 - `Makefile` -- just type `make`, boom, PDF
 - `plmt.tex` -- the LaTeX template
 - `trackchanges.sty` -- the LaTeX style file for track changes (released under the *GPL v2.0*!)
+- `refs.bib` and `vancouver-author-year.csl`, files for the example references
 - `ms.md` -- a template manuscript
 - `ms.pdf` -- an example manuscript
 
@@ -38,7 +39,7 @@ Almost. There are two differences:
 
 ## Plans
 
-- something something tables?
+- do something with tables
 
 ## Unknown bugs
 

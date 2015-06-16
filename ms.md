@@ -1,8 +1,8 @@
 ---
 title: This template is good. Use it. It's free.
 short: Template
-#bibliography: ...
-#csl: ...
+bibliography: refs.bib
+csl: vancouver-author-date.csl
 author:
   - family: Poisot
     given: Timothée
@@ -86,6 +86,13 @@ in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
 # Other features
 
+## Citations
+
+By default, the template will look for citations in the `refs.bib` file (see the
+`YAML` header), but any format recognized by pandoc will work. The default
+format is `vancouver-author-year.csl`. This allows you to, well, cite papers
+[@hutchinson1959].
+
 ## Figures
 
 By default, figures are rendered at the end of the document, with each figure
@@ -111,3 +118,5 @@ works out of the box.
 A = rand((1000, 1000))
 @times A * A
 ```
+
+# References

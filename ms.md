@@ -84,8 +84,30 @@ et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
 ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
 in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
-# Figures
+# Other features
+
+## Figures
 
 By default, figures are rendered at the end of the document, with each figure
 taking up a whole page. There is a table of figures. It is recommended to use
 autoref to cite figures: \autoref{figure1}.
+
+!{figure1}
+
+In the `preprint` mode, figures are displayed in text. The syntaxt to specify
+where a figure should appear is `!{figureid}`, no space, on a single line. Note
+that this is *not* standard markdown.
+
+## Tables
+
+*Coming soon*.
+
+## Code
+
+Of course the nice thing with using `mardkown` is that code highlighting just
+works out of the box.
+
+``` julia
+A = rand((1000, 1000))
+@times A * A
+```

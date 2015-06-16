@@ -6,9 +6,17 @@ This template is a way to make writing academic papers using `pandoc` and
 To compile in draft mode, use `make`; to compile in preprint mode, use `make
 TYPE=preprint`. That's it.
 
+## Is it standard markdown?
+
+Almost. There are two differences:
+
+1. You *need to* use `!{figure.id}`, on a single line, to determine where the figure will appear
+2. You *can* use `@id` in *CriticMarkup* to identify who wrote the comment
+
 ## What do you get?
 
 - `critic.sh` -- a shell script that will transform *CriticMarkup* into the commands used by LaTeX `trackchanges.sty`
+- `figures.py` -- a python script to deal with figures
 - `Makefile` -- just type `make`, boom, PDF
 - `plmt.tex` -- the LaTeX template
 - `trackchanges.sty` -- the LaTeX style file for track changes (released under the *GPL v2.0*!)
@@ -20,6 +28,7 @@ TYPE=preprint`. That's it.
 - `pandoc` (> 1.13, if not the arrays in `YAML` won't render)
 - a (relatively well furnished) LaTeX distribution
 - `perl`
+- `python` and the `yaml` package
 - `make`
 - an idea for a manuscript
 

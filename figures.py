@@ -13,22 +13,32 @@ text = open(FILE, "r")
 copy = open(FILE+"_NEW", "wt")
 
 docs = yaml.load_all(header)
+
 for doc in docs:
     if not doc == None:
         if 'figure' in doc.keys():
-            for f in doc['figure']:
-                for line in text:
+            for line in text:
+                mfig = False
+                for f in doc['figure']:
                     my_regex = r"^!\{" + re.escape(f['id']) + r"\}$"
                     if re.search(my_regex, line, re.IGNORECASE):
+                        mfig = True
+                        print line
                         if TYPE == 'preprint':
-                            copy.write("\n\\begin{figure}[bt]\n")
+                            ftype = "figure"
+                            fwidth = "\\columnwidth"
+                            if "wide" in f.keys():
+                                ftype = "figure*"
+                                fwidth = "\\textwidth"
+                            copy.write("\n\\begin{" + ftype + "}[bt]\n")
                             copy.write("\t\\centering\n")
-                            copy.write("\t\\includegraphics[width=\\columnwidth]{" + f['file'] + "}\n")
+                            copy.write("\t\\includegraphics[width=" + fwidth + "]{" + f['file'] + "}\n")
                             copy.write("\t\\caption{" + f['caption'] + "}\n")
                             copy.write("\t\\label{" + f['id'] + "}\n")
-                            copy.write("\\end{figure}\n\n")
-                    else:
-                        copy.write(line)
+                            copy.write("\\end{" + ftype + "}\n\n")
+                if not mfig:
+                    copy.write(line)
+
 
 header.close()
 text.close()

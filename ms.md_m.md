@@ -54,13 +54,13 @@ will be marked differently.
 The following lines should be highlighted in `draft`, but not in `preprint`
 mode. With the exception of the highlights, which are always shown.
 
-- {++addition++} {++@tp with an author name++}
-- {--deletion--} {--@sa with an author name--}
-- {~~@tp replacement~>with author name~~}
-- {==this sentence==}{>>has an annotation<<}
-- {==this sentence==}{>>@sa has a signed annotation<<}
-- {==highlight only==}, and a {==@tp signed highlight==}
-- {>>note only<<}, and a {>>@tp signed note<<}
+- \add{addition} \add[tp]{with an author name}
+- \remove{deletion} \remove[sa]{with an author name}
+- \change[tp]{replacement}{with author name}
+- \annote{this sentence}{has an annotation}
+- \annote[sa]{this sentence}{has a signed annotation}
+- \hilight{highlight only}, and a \hilight{\small{\color{red}tp} signed highlight}
+- \note{note only}, and a \note[tp]{signed note}
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
@@ -104,7 +104,6 @@ By default, figures are rendered at the end of the document, with each figure
 taking up a whole page. There is a table of figures. It is recommended to use
 autoref to cite figures: \autoref{figure1}.
 
-!{figure1}
 
 In the `preprint` mode, figures are displayed in text. The syntaxt to specify
 where a figure should appear is `!{figureid}`, no space, on a single line. Note
@@ -128,7 +127,6 @@ A = rand((1000, 1000))
 ```
 
 
-!{figure2}
 
 
 # References

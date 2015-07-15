@@ -131,4 +131,24 @@ A = rand((1000, 1000))
 !{figure2}
 
 
+## Math
+
+You can write math directly within the markdown file using LaTeX syntax for
+`amsmath` environments, including inline math $a^2 + b^2 = c^2$, display
+equations
+\begin{equation}\label{e1}
+e^0 = 1,
+\end{equation}
+or aligned environments
+\begin{subequations}\label{e2}
+\begin{align}
+x &= y,\\
+y &= z\\
+&\therefore \nonumber \\
+x &= z.
+\end{align}
+\end{subequations}
+Referencing also works: for example the display equation \eqref{e1}
+or the aligned equations \eqref{e2}.
+
 # References

@@ -45,8 +45,9 @@ Almost. There are two differences:
 
 ### Older computing environments
 
-The LaTeX templates and Makefile underlying this template were developed and tested with [os versions].
-Using older computing environments may cause issues, but a workaround may be possible. For example:
+The LaTeX templates and Makefile underlying this template were developed and tested
+with Ubuntu 14.04, Ubuntu 14.10, Fedora 21, and Fedora 22. Using older computing
+environments may cause issues, but a workaround may be possible. For example:
 
 * workaround for OS X 10.6.8, TeXLive 2013 [in this fork](https://github.com/ashander/PLMT) (for issues due to `grep` in Makefile and `twocolumn` in LaTeX template)
 

@@ -33,13 +33,22 @@ Almost. There are two differences:
 - `make`
 - an idea for a manuscript
 
-## Known bugs
 
-- There may be issues when several annotated sentences are on the same line
 
 ## Plans
 
 - do something with tables
+
+## Known bugs
+
+- There may be issues when several annotated sentences are on the same line
+
+### Older computing environments
+
+The LaTeX templates and Makefile underlying this template were developed and tested with [os versions].
+Using older computing environments may cause issues, but a workaround may be possible. For example:
+
+* workaround for OS X 10.6.8, TeXLive 2013 [in this fork](https://github.com/ashander/PLMT) (for issues due to `grep` in Makefile and `twocolumn` in LaTeX template)
 
 ## Unknown bugs
 

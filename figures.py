@@ -23,7 +23,6 @@ for doc in docs:
                     my_regex = r"^!\{" + re.escape(f['id']) + r"\}$"
                     if re.search(my_regex, line, re.IGNORECASE):
                         mfig = True
-                        print line
                         if TYPE == 'preprint':
                             ftype = "figure"
                             fwidth = "\\columnwidth"
@@ -32,7 +31,6 @@ for doc in docs:
                                 fwidth = "\\textwidth"
                             copy.write("\n\\begin{" + ftype + "}[bt]\n")
                             copy.write("\t\\centering\n")
-                            print f
                             copy.write("\t\\includegraphics[width=" + fwidth + "]{" + f['file'] + "}\n")
                             copy.write("\t\\caption{" + f['caption'] + "}\n")
                             copy.write("\t\\label{" + f['id'] + "}\n")

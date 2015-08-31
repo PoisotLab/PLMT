@@ -3,10 +3,16 @@
 cat $1 > $2
 
 # Additions
+perl -pi -e 's/{\+\+@(\w+) /\\add[$1]{/gm' $2
+perl -pi -e 's/{\+\+/\\add{/gm' $2
+perl -pi -e 's/\+\+}/}/gm' $2
 perl -pi -e 's/{\+\+@(\w+) (.+)\+\+}/\\add[$1]{$2}/gm' $2
 perl -pi -e 's/{\+\+(.+)\+\+}/\\add{$1}/gm' $2
 
 # Deletions
+perl -pi -e 's/{\-\-@(\w+) /\\remove[$1]{/gm' $2
+perl -pi -e 's/{\-\-/\\remove{/gm' $2
+perl -pi -e 's/\-\-}/}/gm' $2
 perl -pi -e 's/{\-\-@(\w+) (.+)\-\-}/\\remove[$1]{$2}/gm' $2
 perl -pi -e 's/{\-\-(.+)\-\-}/\\remove{$1}/gm' $2
 

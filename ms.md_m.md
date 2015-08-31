@@ -35,6 +35,11 @@ figure:
     short: Example figure.
     file: figure1.png
     wide: true
+  - id: figure3
+    caption: This is a third figure. It is in a path with an underscore.
+    short: Example figure.
+    file: "figure_underscore/figure1.png"
+    wide: true
 date: Work in progress.
 abstract: Writing manuscripts doesn't have to be awful. This template *tries* to provide good defaults for both the draft and preprint modes. Most of the information is contained in the YAML file.
 ---
@@ -105,7 +110,7 @@ taking up a whole page. There is a table of figures. It is recommended to use
 autoref to cite figures: \autoref{figure1}.
 
 
-In the `preprint` mode, figures are displayed in text. The syntaxt to specify
+In the `preprint` mode, figures are displayed in text. The syntax to specify
 where a figure should appear is `!{figureid}`, no space, on a single line. Note
 that this is *not* standard markdown.
 
@@ -118,7 +123,7 @@ only be noticeable in the `preprint` mode.
 
 ## Code
 
-Of course the nice thing with using `mardkown` is that code highlighting just
+Of course the nice thing with using `markdown` is that code highlighting just
 works out of the box.
 
 ``` julia
@@ -128,5 +133,25 @@ A = rand((1000, 1000))
 
 
 
+
+## Math
+
+You can write math directly within the markdown file using LaTeX syntax for
+`amsmath` environments, including inline math $a^2 + b^2 = c^2$, display
+equations
+\begin{equation}\label{e1}
+e^0 = 1,
+\end{equation}
+or aligned environments
+\begin{subequations}\label{e2}
+\begin{align}
+x &= y,\\
+y &= z\\
+&\therefore \nonumber \\
+x &= z.
+\end{align}
+\end{subequations}
+Referencing also works: for example the display equation \eqref{e1}
+or the aligned equations \eqref{e2}.
 
 # References

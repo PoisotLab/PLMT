@@ -127,9 +127,7 @@ A = rand((1000, 1000))
 @times A * A
 ```
 
-
 !{figure2}
-
 
 ## Math
 

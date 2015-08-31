@@ -32,6 +32,7 @@ for doc in docs:
                                 fwidth = "\\textwidth"
                             copy.write("\n\\begin{" + ftype + "}[bt]\n")
                             copy.write("\t\\centering\n")
+                            print f
                             copy.write("\t\\includegraphics[width=" + fwidth + "]{" + f['file'] + "}\n")
                             copy.write("\t\\caption{" + f['caption'] + "}\n")
                             copy.write("\t\\label{" + f['id'] + "}\n")

@@ -124,7 +124,7 @@ works out of the box.
 
 ``` julia
 A = rand((1000, 1000))
-@times A * A
+@elapsed A * A
 ```
 
 !{figure2}

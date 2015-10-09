@@ -37,7 +37,9 @@ for doc in docs:
                             copy.write("\\end{" + ftype + "}\n\n")
                 if not mfig:
                     copy.write(line)
-
+        else:
+            for line in text:
+                copy.write(line)
 
 header.close()
 text.close()

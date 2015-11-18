@@ -1,7 +1,7 @@
 ---
 title: This template is good. Use it. It's free.
 short: Template
-bibliography: refs.bib
+bibliography: default.json
 csl: vancouver-author-date.csl
 author:
   - family: Poisot
@@ -34,11 +34,6 @@ figure:
     caption: This is a second figure. It is taking the two columns in preprint mode.
     short: Example figure.
     file: figure1.png
-    wide: true
-  - id: figure3
-    caption: This is a third figure. It is in a path with an underscore.
-    short: Example figure.
-    file: "figure_underscore/figure1.png"
     wide: true
 date: Work in progress.
 abstract: Writing manuscripts doesn't have to be awful. This template *tries* to provide good defaults for both the draft and preprint modes. Most of the information is contained in the YAML file.
@@ -98,16 +93,24 @@ in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
 ## Citations
 
-By default, the template will look for citations in the `refs.bib` file (see the
-`YAML` header), but any format recognized by pandoc will work. The default
-format is `vancouver-author-year.csl`. This allows you to, well, cite papers
-[@hutchinson1959].
+By default, the template will look for citations in the `refs.bib` file
+(see the `YAML` header), but any format recognized by pandoc will work. The
+default format is `vancouver-author-year.csl`. This allows you to, well,
+cite papers [@hutchinson_hsr].
 
 ## Figures
 
 By default, figures are rendered at the end of the document, with each figure
 taking up a whole page. There is a table of figures. It is recommended to use
 autoref to cite figures: \autoref{figure1}.
+
+
+\begin{figure}[bt]
+	\centering
+	\includegraphics[width=\columnwidth]{figure1.png}
+	\caption{This is a figure.}
+	\label{figure1}
+\end{figure}
 
 
 In the `preprint` mode, figures are displayed in text. The syntax to specify
@@ -128,10 +131,16 @@ works out of the box.
 
 ``` julia
 A = rand((1000, 1000))
-@times A * A
+@elapsed A * A
 ```
 
 
+\begin{figure*}[bt]
+	\centering
+	\includegraphics[width=\textwidth]{figure1.png}
+	\caption{This is a second figure. It is taking the two columns in preprint mode.}
+	\label{figure2}
+\end{figure*}
 
 
 ## Math

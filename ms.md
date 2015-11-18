@@ -1,7 +1,7 @@
 ---
 title: This template is good. Use it. It's free.
 short: Template
-bibliography: refs.bib
+bibliography: default.json
 csl: vancouver-author-date.csl
 author:
   - family: Poisot
@@ -93,10 +93,10 @@ in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
 ## Citations
 
-By default, the template will look for citations in the `refs.bib` file (see the
-`YAML` header), but any format recognized by pandoc will work. The default
-format is `vancouver-author-year.csl`. This allows you to, well, cite papers
-[@hutchinson1959].
+By default, the template will look for citations in the `refs.bib` file
+(see the `YAML` header), but any format recognized by pandoc will work. The
+default format is `vancouver-author-year.csl`. This allows you to, well,
+cite papers [@hutchinson_hsr].
 
 ## Figures
 

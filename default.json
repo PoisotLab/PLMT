@@ -1,0 +1,24 @@
+[
+    {
+        "author": [
+            {
+                "family": "Hutchinson",
+                "given": "G E"
+            }
+        ],
+        "container-title": "Am. Nat.",
+        "id": "hutchinson_hsr",
+        "issue": "870",
+        "issued": {
+            "date-parts": [
+                [
+                    1959
+                ]
+            ]
+        },
+        "page": "145",
+        "title": "Homage to Santa Rosalia or why are there so many kinds of animals?",
+        "type": "article-journal",
+        "volume": "93"
+    }
+]

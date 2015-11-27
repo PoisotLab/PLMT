@@ -68,10 +68,12 @@ $if(preprint)$\geometry{margin=1.7cm}$endif$
 $if(preprint)$
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\fancyhead[LO,RE]{$if(short)$\small\textbf{Preprint:}\slshape\,$short$$endif$}
+\fancyhead[LO,RE]{}
 \fancyhead[LE,RO]{}
 \fancyfoot[C]{}
+\fancyfoot[LO,RE]{$if(short)$\small\textbf{Preprint:}\slshape\,$short$$endif$}
 \fancyfoot[LE,RO]{Page \thepage}
+\renewcommand{\headrulewidth}{0pt}
 $endif$
 
 $if(draft)$

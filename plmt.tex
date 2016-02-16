@@ -61,6 +61,20 @@ $if(preprint)$
 \makeatother
 $endif$
 
+\usepackage[compact,uppercase,tiny]{titlesec}
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\Roman{section}.\roman{subsection}}
+\renewcommand{\thesubsubsection}{\Roman{section}.\roman{subsection}.\alph{subsubsection}}
+
+\titleformat{\section}%
+{\bfseries\sffamily\uppercase}{\mdseries{\thesection}}{0.6em}{}
+
+\titleformat{\subsection}[runin]%
+{\bfseries\sffamily}{\mdseries{\small \thesubsection}}{0.6em}{}[.]
+
+\titleformat{\subsubsection}[runin]%
+{\itshape\sffamily}{\mdseries{\small\upshape \thesubsubsection}}{0.6em}{}[.]
+
 \usepackage[letterpaper]{geometry}
 $if(draft)$\geometry{margin=2.5cm}$endif$
 $if(preprint)$\geometry{margin=1.7cm}$endif$

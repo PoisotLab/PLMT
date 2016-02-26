@@ -1,0 +1,13 @@
+draft:
+    script:
+        - make TITLE=networks TYPE=draft
+    artifacts: 
+        paths:
+            - networks_draft_version.pdf
+
+preprint:
+    script:
+        - make TITLE=networks TYPE=preprint
+    artifacts: 
+        paths:
+            - networks_preprint_version.pdf

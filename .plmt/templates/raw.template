@@ -1,0 +1,63 @@
+\documentclass[12pt]{article}
+
+\usepackage[table]{xcolor}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+
+\makeatletter
+\def\ScaleIfNeeded{%
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+% fonts
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textgreek}
+\usepackage[greek,english]{babel}
+\usepackage{amsmath}
+
+% Code highlight and colors
+\usepackage{listings}
+\lstset{
+  numbers=left,
+  tabsize=1,
+  basicstyle=\small\ttfamily,
+  breaklines=true
+}
+
+\usepackage{booktabs, tabularx, longtable}
+\usepackage{csquotes}
+\usepackage{authblk}
+
+% Geometry block
+\usepackage[letterpaper]{geometry}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\title{$title$}
+
+$for(author)$
+\author[$for(author.affiliations)$$author.affiliations$$sep$,$endfor$]{$author.given$~$author.family$}
+$endfor$
+$for(affiliation)$
+\affil[$affiliation.id$]{$affiliation.text$}
+$endfor$
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  $abstract$
+\end{abstract}
+
+$body$
+
+\end{document}

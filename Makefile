@@ -76,7 +76,7 @@ rmd2md: $(wildcard $(FILE).Rmd) #> Convert the Rmd file to the md file using kni
 # This rule will compile the Jmd file to the md file IF there is a Jmd file with
 # the same name. If not, it will do nothing.
 jmd2md: $(wildcard $(FILE).Jmd) #> Convert the Jmd file to the md file using Weave.jl
-	@$(if $(wildcard $(FILE).Jmd),julia -e 'using Weave; weave("$<", doctype="$(SOURCE)")',echo "No Jmd file found")
+	@$(if $(wildcard $(FILE).Jmd),julia -e 'using Weave; weave("$<", doctype="pandoc")',echo "No Jmd file found")
 
 # If there is no Jmd or Rmd file, this rule with do nothing. If there is either
 # of these files, it will compile them to md.

@@ -48,7 +48,7 @@ help: #> Show the help
 output/: #> Create the output directory to store the pdf and odt files
 	mkdir -p output
 
-# This rule will, by default, make the draft, the preprint, and the odt# TODO
+# This rule will, by default, make the draft, the preprint, and the odt
 # document.
 all: draft preprint odt #> Make all the default outputs
 

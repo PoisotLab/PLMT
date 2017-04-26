@@ -1,0 +1,40 @@
+\usepackage{soul}
+\setstcolor{del}
+\setul{0.2pt}{1pt}
+\setulcolor{hlh}
+
+\newcommand\edmark[1]{%
+  {\small\color{blue}\bfseries\sffamily #1}%
+}
+
+\newcommand\add[2][]{%
+\ifstrempty{#1}{%
+\textcolor{green}{#2}%
+}{%
+\textcolor{green}{#2 \edmark{#1}}%
+}%
+}
+
+\newcommand\remove[2][]{%
+\ifstrempty{#1}{%
+\textcolor{red}{\st{#2}}%
+}{%
+\textcolor{red}{\st{#2} \edmark{#1}}%
+}%
+}
+
+\newcommand\note[2][]{%
+\ifstrempty{#1}{%
+\textcolor{purple}{[\small\sffamily #2]}%
+}{%
+\textcolor{purple}{[\small\sffamily #2 -- \edmark{#1}]}%
+}%
+}
+
+\newcommand\highlight[2][]{%
+\ifstrempty{#1}{%
+\ul{#2}%
+}{%
+\ul{#2} (\edmark{#1})%
+}%
+}

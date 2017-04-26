@@ -1,0 +1,3 @@
+This template uses the magic of makefiles, pandoc, and markdown, to make it easy
+to produce multiple documents from markdown, R markdown, or Julia markdown
+files. Just type `make` at the command line to see the different options.

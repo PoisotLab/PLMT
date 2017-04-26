@@ -1,0 +1,45 @@
+[
+  {
+    "author": [
+      {
+        "family": "Hutchinson",
+        "given": "G E"
+      }
+    ],
+    "container-title": "Cold Spring Harb. Symp. Quant. Biol.",
+    "issued": {
+      "date-parts": [
+        [
+          1957
+        ]
+      ]
+    },
+    "page": "415-427",
+    "title": "Concluding remarks",
+    "type": "article-journal",
+    "volume": "22",
+    "id": "hutc57cr"
+  },
+  {
+    "author": [
+      {
+        "family": "Hutchinson",
+        "given": "G E"
+      }
+    ],
+    "container-title": "Am. Nat.",
+    "issue": "870",
+    "issued": {
+      "date-parts": [
+        [
+          1959
+        ]
+      ]
+    },
+    "page": "145",
+    "title": "Homage to Santa Rosalia or why are there so many kinds of animals?",
+    "type": "article-journal",
+    "volume": "93",
+    "id": "hutc59hsr"
+  }
+]

@@ -1,0 +1,39 @@
+---
+title: Template for pandoc / markdown manuscripts
+short: Manuscript template
+keyword:
+  - ecological networks
+  - beta-diversity
+  - biogeography
+date: 2017-03-02T00:00:00.000Z
+abstract: >
+  This template uses the magic of makefiles, pandoc, and markdown, to make it
+  easy
+
+  to produce multiple documents from markdown, R markdown, or Julia markdown
+
+  files. Just type `make` at the command line to see the different options.
+author:
+  - family: Poisot
+    given: Timothée
+    affiliations:
+      - 1
+      - 2
+    email: timothee.poisot@umontreal.ca
+    id: tp
+    orcid: 0000-0002-0735-5184
+  - family: Author
+    given: Second
+    affiliations:
+      - 2
+      - 3
+    id: sa
+affiliation:
+  - id: 1
+    text: 'Université de Montréal, Département de Sciences Biologiques'
+  - id: 2
+    text: Québec Centre for Biodiversity Sciences
+  - id: 3
+    text: University of Whatever
+cleveref: true
+...

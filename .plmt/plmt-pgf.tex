@@ -1,0 +1,52 @@
+\usepackage{tikz}
+\tikzstyle{node}=[draw, circle, minimum size=0.8cm, thick]
+\tikzstyle{edge}=[draw, thick]
+\usetikzlibrary{arrows}
+
+\usepackage{pgfplots}
+\pgfkeys{/pgf/number format/.cd,1000 sep={\,}}
+\usepgfplotslibrary{groupplots}
+
+\pgfplotscreateplotcyclelist{scatter cycle}{
+    {draw=accent, thin, only marks, mark size = 2.2pt, mark=*, fill=bg},
+    {draw=accent, thin, only marks, mark size = 2.2pt, mark=triangle*, fill=bg},
+    {draw=accent, thin, only marks, mark size = 2.2pt, mark=square*, fill=bg},
+    {draw=accent, thin, only marks, mark size = 2.2pt, mark=diamond*, fill=bg},
+}
+
+\pgfplotscreateplotcyclelist{lines cycle}{
+    {draw=accent, thin, mark=none,},
+    {draw=accent, thin, densely dotted, mark=none,},
+    {draw=accent, thin, densely dashed, mark=none,},
+}
+
+\pgfplotsset{
+    compat=1.9,
+    scale only axis,
+    height=0.6\columnwidth,
+    width=\columnwidth,
+    tick align=outside,
+    axis x line*=bottom,
+    axis y line*=left,
+    y axis line style={meta},
+    x axis line style={meta},
+    xlabel style={
+            at={(ticklabel cs:0)},
+            anchor=north west,
+            font=\small\sffamily\bfseries,
+        },
+    ylabel style={
+            at={(ticklabel cs:0)},
+            anchor=south west,
+            font=\small\sffamily\bfseries,
+        },
+    tick label style={
+            font=\sffamily\small,
+            black,
+        },
+    major grid style={
+            dotted,
+            very thin,
+            meta!50!bg
+        },
+}

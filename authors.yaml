@@ -1,0 +1,16 @@
+---
+- family: Poisot
+  given: Timothée
+  affiliations:
+    - Université de Montréal, Département de Sciences Biologiques
+    - Québec Centre for Biodiversity Sciences
+  email: timothee.poisot@umontreal.ca
+  id: tp
+  orcid: 0000-0002-0735-5184
+- family: Author
+  given: Second
+  affiliations:
+    - University of Whatever
+    - Québec Centre for Biodiversity Sciences
+  id: sa
+...

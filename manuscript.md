@@ -126,7 +126,7 @@ summary(rnorm(250))
 
 ```
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -3.5000 -0.7319 -0.1085 -0.0828  0.5507  2.8820
+## -2.5810 -0.7748 -0.1319 -0.1267  0.4907  2.9290
 ```
 
 Note that the extensions *must* be `Rmd` or `Jmd`, with an uppercase first

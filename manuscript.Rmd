@@ -3,6 +3,8 @@ markdown, R markdown, and Julia markdown documents easy. Once downloaded, type
 `make` to see the output. This will generate two pdf documents and one
 OpenDocument file.
 
+You can use unicode in the text, α ∈ x², or in code:
+
 # Installation
 
 To get started, you will need the python `pandoc-fignos`, `pandoc-eqnos`, and

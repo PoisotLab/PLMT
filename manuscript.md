@@ -3,6 +3,8 @@ markdown, R markdown, and Julia markdown documents easy. Once downloaded, type
 `make` to see the output. This will generate two pdf documents and one
 OpenDocument file.
 
+You can use unicode in the text, α ∈ x², or in code:
+
 # Installation
 
 To get started, you will need the python `pandoc-fignos`, `pandoc-eqnos`, and
@@ -125,8 +127,8 @@ summary(rnorm(250))
 ```
 
 ```
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -3.5000 -0.7319 -0.1085 -0.0828  0.5507  2.8820
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -2.14700 -0.67180  0.03740  0.01673  0.71070  4.40400
 ```
 
 Note that the extensions *must* be `Rmd` or `Jmd`, with an uppercase first

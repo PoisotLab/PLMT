@@ -24,7 +24,7 @@ MARKED= ./.plmt/processed.md
 
 # PFLAGS is the list of pandoc filters and options required to make the
 # documents. You can add some, but it is probably wise not to remove any.
-PFLAGS= --filter pandoc-fignos --filter pandoc-tablenos --filter pandoc-eqnos --filter pandoc-citeproc --listings --bibliography $(BIB) --csl $(CSL)
+PFLAGS= --filter pandoc-fignos --filter pandoc-tablenos --filter pandoc-eqnos --filter pandoc-citeproc --listings --bibliography $(BIB) --csl $(CSL) --latex-engine=lualatex
 
 # TAG is the version of the git tag or commit against which the track-changed
 # pdf should be built. By default, it is the latest commit (so you can see your

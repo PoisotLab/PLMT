@@ -137,6 +137,11 @@ revised.md: $(SOURCE)
 # This is the rule to create the track changed pdf. The filename will have the
 # TAG in it.
 output/diff_$(FILE)_$(TAG)_$(AS).pdf: revised.md
+	git diff --no-index --word-diff -U2000 $< $(SOURCE) > out.md
+	sed -i "s/\[-/\{--/" out.md
+	sed -i "s/-\]/--\}/" out.md
+	sed -i "s/\{+/\{++/" out.md
+	sed -i "s/+\}/++\}/" out.md
 	pandoc $< -o old.tex $(PFLAGS) --template ./.plmt/templates/$(AS).template .metadata.yaml
 	pandoc $(MARKED) -o new.tex $(PFLAGS) --template ./.plmt/templates/$(AS).template .metadata.yaml
 	latexdiff old.tex new.tex > diff.tex

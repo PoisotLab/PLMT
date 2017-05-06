@@ -103,6 +103,8 @@ odt: output/$(FILE).odt #> Create a LibreOffice document
 # Additional rules go here. By default, they are commented, but removing the #
 # in front will activate them.
 
+html: output/$(FILE).html #> Create a html document (not in all)
+
 #plos: output/$(FILE)_plos.pdf #> Create a pdf using the PLOS template for submission
 
 # These are the actual rules to build the documents -- they will go into the
@@ -120,6 +122,9 @@ output/$(FILE).odt: $(MARKED)
 	pandoc $(MARKED) -o $@ $(PFLAGS) --template ./.plmt/templates/opendocument.template .metadata.yaml
 
 # Rules for the other documents go here
+
+output/$(FILE).html: $(MARKED)
+	pandoc $(MARKED) -o $@ $(PFLAGS) --template ./.plmt/templates/html.template .metadata.yaml
 
 $(FILE)_plos.pdf: $(MARKED)
 	pandoc $(MARKED) -o $@ $(PFLAGS) --template ./.plmt/templates/plos.template .metadata.yaml

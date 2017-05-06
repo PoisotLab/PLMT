@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Template for pandoc / markdown manuscripts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+
+    <h1>Template for pandoc / markdown manuscripts</h1>
+
+    <blockquote>
+      <p>This template uses the magic of makefiles, pandoc, and markdown, to make it easy to produce multiple documents from markdown, R markdown, or Julia markdown files. Just type <code>make</code> at the command line to see the different options.</p>
+    </blockquote>
+
+    <p>This project intends to make the generation of high-quality preprints from markdown, R markdown, and Julia markdown documents easy. Once downloaded, type <code>make</code> to see the output. This will generate two pdf documents and one OpenDocument file.</p>
+    <h1 id="installation">Installation</h1>
+    <p>To get started, you will need the python <code>pandoc-fignos</code>, <code>pandoc-eqnos</code>, and <code>pandoc-tablenos</code> filters.</p>
+    <pre class="shell"><code>make dependencies</code></pre>
+    <p>Make sure that <code>pandoc</code> and <code>pandoc-citeproc</code> are installed, and that you have a LaTeX installation. You will also need an installation of node. If you want to use this template with reproducible documents, you will need either <code>knitr</code> or <code>Weave.jl</code>.</p>
+    <h1 id="document-options">Document options</h1>
+    <p>There are two important files to edit to specificy the manuscript informations. First, <code>authors.yaml</code> should be self-explanatory; it contains the author names, email addres for the corresponding author, and affiliations. The <code>infos.yaml</code> file is for the manuscript title, keywords, etc. Finally, the <code>ABSTRACT</code> file has the abstract. It can contain markdown formatting.</p>
+    <h1 id="citations-tables-figures-...">Citations, tables, figures, ...</h1>
+    <h2 id="tables">Tables</h2>
+    <p>Table legends go on the line after the table itself. To generate a reference to the table, use <code>{#tbl:id}</code> -- then, in the text, you can use <code>{@tbl:id}</code> to refer to the table. For example, the table below is table <a href="#tbl:id">1</a>. You can remove the <em>table</em> in front by using <code>!@tbl:id</code>, or force it to be capitalized with <code>\*tbl:id</code>.</p>
+    <a name="tbl:id"></a>
+    <table>
+    <caption>Table 1: This is a table, and its identifier is <code>id</code> -- we can refer to it using <code>{@tbl:id}</code>. Note that even if the table legend is written below the table itself, it will appear on top in the compiled document. </caption>
+    <thead>
+    <tr class="header">
+    <th align="left">Using</th>
+    <th align="right">produces</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="odd">
+    <td align="left"><code>@tbl:id</code></td>
+    <td align="right">table <a href="#tbl:id">1</a></td>
+    </tr>
+    <tr class="even">
+    <td align="left"><code>!@tbl:id</code></td>
+    <td align="right"><a href="#tbl:id">1</a></td>
+    </tr>
+    <tr class="odd">
+    <td align="left"><code>\*@tbl:id</code></td>
+    <td align="right">Table <a href="#tbl:id">1</a></td>
+    </tr>
+    </tbody>
+    </table>
+    <h2 id="equations">Equations</h2>
+    <p>Equations can be referenced using the same syntax as tables, using the <code>eq</code> prefix in place of <code>tbl</code>. For example:</p>
+    <p><a name="eq:id"></a><span style="display: inline-block; position: relative; width: 100%"><br /><span class="math display"><em>y</em> = <em>m</em><em>x</em> + <em>b</em></span><br /><span style="position: absolute; right: 0em; top: 50%; line-height:0; text-align: right">(1)</span></span> </p>
+    <p>We can refer to eq. <a href="#eq:id">1</a> in the text.</p>
+    <h2 id="adding-references">Adding references</h2>
+    <p>References go in the <code>references.json</code> file, at the root of the project. References are cited with <code>@key</code>, where <code>key</code> is the unique identifier of the reference. Both inline, like <span class="citation">Hutchinson (1959)</span>, and in brackets <span class="citation">(Hutchinson 1957)</span> can be used.</p>
+    <h2 id="figures">Figures</h2>
+    <p>Figures can be used with the usual markdown syntax. After the path, you can use <code>{#fig:id width=50%}</code> to specify the width and the reference. See table <a href="#tbl:id">1</a> for how to cite. The code below in the markdown source produces fig. <a href="#fig:id">1</a>.</p>
+    <div class="figure">
+    <embed src="figure/histogram-1.pdf" id="fig:id" style="width:100.0%" />
+    <p class="caption">Figure 1: This is a figure. Figures can have identifiers, and the width can be changed as well.</p>
+    </div>
+    <h1 id="other-elements">Other elements</h1>
+    <h2 id="code-blocks">Code blocks</h2>
+    <p>You can use fenced code blocks to render code:</p>
+    <div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">// Update affiliations</span>
+    <span class="kw">var</span> print_affiliations <span class="op">=</span> []
+    <span class="cf">for</span> (<span class="kw">var</span> af <span class="kw">in</span> affiliations) <span class="op">{</span>
+      <span class="kw">var</span> afobject <span class="op">=</span> <span class="op">{}</span>
+      <span class="va">afobject</span>.<span class="at">id</span> <span class="op">=</span> affiliations[af]
+      <span class="va">afobject</span>.<span class="at">text</span> <span class="op">=</span> af
+      <span class="va">print_affiliations</span>.<span class="at">push</span>(afobject)
+    <span class="op">}</span></code></pre></div>
+    <p>Note that code blocks have line numbers of the left, so this does not interfer with the line numbers of the text (which are on the right).</p>
+    <h2 id="track-changes">Track changes</h2>
+    <p>You can use <code>make diff</code> to create a marked-up pdf document. The git revision can be specified with the <code>TAG</code> variable of <code>make</code> (by default, the latest commit). The other option is <code>AS</code>, which can be <code>draft</code> or <code>preprint</code>, to render the marked-up version as a draft or as a preprint.</p>
+    <h2 id="editorial-marks">Editorial marks</h2>
+    <p><a href="http://criticmarkup.com/">Critic Markup</a> is rendered:</p>
+    <p>Don't go around saying the world owes you a living. The world owes you nothing. It was here first.  thing is impossible for God: To find  sense in any copyright law on the planet. , but it is because Fiction is obliged to stick to possibilities; Truth isn't.</p>
+    <p>Note that CriticMarkup is <em>not</em> rendered into OpenDocument.</p>
+    <h2 id="using-with-knitr-weave.jl-...">Using with knitr, Weave.jl, ...</h2>
+    <p>Just type <code>make</code>. If there is a <code>Rmd</code> or <code>Jmd</code> document with the same base name, the makefile will render the markdown document for you. In fact, this document <em>is</em> a <code>Rmd</code> file:</p>
+    <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">rnorm</span>(<span class="dv">250</span>))</code></pre></div>
+    <pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+    ## -3.027000 -0.635600 -0.013650  0.007163  0.558000  2.845000</code></pre>
+    <p>Note that the extensions <em>must</em> be <code>Rmd</code> or <code>Jmd</code>, with an uppercase first letter. Of course you will need <code>knitr</code> (for <code>R</code>) or <code>Weave.jl</code> (for <code>julia</code>).</p>
+    <p>Because of the way figures are refered to (using the <code>@fig:id</code> syntax), it is better to generate the figure first, and then call it in the text, using <code>fig.show='hide'</code>. The code below will generate fig. <a href="#fig:chunk">2</a>.</p>
+    <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">sort</span>(<span class="kw">rnorm</span>(<span class="dv">200</span>)), <span class="dt">type=</span><span class="st">&#39;l&#39;</span>)</code></pre></div>
+    <p>You can then use this figure:</p>
+    <div class="figure">
+    <embed src="figure/testfig-1.pdf" id="fig:chunk" style="width:100.0%" />
+    <p class="caption">Figure 2: This is the figure created by the chunck <code>testfig</code>, so it is in <code>figure/testfig-1</code>. You can use different <code>dev</code> in the knitr chunk options, so it is possible to generate pdf or png figures.</p>
+    </div>
+    <p>With <code>knitr</code>, the <code>kable</code> function can create tables. If you add the caption paragraph immediately below, then these tables can be cited. This is how we produce table <a href="#tbl:knit">2</a>.</p>
+    <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">data</span>(iris)
+    <span class="kw">kable</span>(<span class="kw">head</span>(iris))</code></pre></div>
+    <a name="tbl:knit"></a>
+    <table>
+    <caption>Table 2: This is a table, and its identifier is <code>knit</code> -- we can refer to it using <code>{@tbl:knit}</code>. Note that even if the table legend is written below the table itself, it will appear on top in the compiled document. </caption>
+    <thead>
+    <tr class="header">
+    <th align="right">Sepal.Length</th>
+    <th align="right">Sepal.Width</th>
+    <th align="right">Petal.Length</th>
+    <th align="right">Petal.Width</th>
+    <th align="left">Species</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="odd">
+    <td align="right">5.1</td>
+    <td align="right">3.5</td>
+    <td align="right">1.4</td>
+    <td align="right">0.2</td>
+    <td align="left">setosa</td>
+    </tr>
+    <tr class="even">
+    <td align="right">4.9</td>
+    <td align="right">3.0</td>
+    <td align="right">1.4</td>
+    <td align="right">0.2</td>
+    <td align="left">setosa</td>
+    </tr>
+    <tr class="odd">
+    <td align="right">4.7</td>
+    <td align="right">3.2</td>
+    <td align="right">1.3</td>
+    <td align="right">0.2</td>
+    <td align="left">setosa</td>
+    </tr>
+    <tr class="even">
+    <td align="right">4.6</td>
+    <td align="right">3.1</td>
+    <td align="right">1.5</td>
+    <td align="right">0.2</td>
+    <td align="left">setosa</td>
+    </tr>
+    <tr class="odd">
+    <td align="right">5.0</td>
+    <td align="right">3.6</td>
+    <td align="right">1.4</td>
+    <td align="right">0.2</td>
+    <td align="left">setosa</td>
+    </tr>
+    <tr class="even">
+    <td align="right">5.4</td>
+    <td align="right">3.9</td>
+    <td align="right">1.7</td>
+    <td align="right">0.4</td>
+    <td align="left">setosa</td>
+    </tr>
+    </tbody>
+    </table>
+    <h1 id="references" class="unnumbered">References</h1>
+    <div id="refs" class="references">
+    <div id="ref-hutc57cr">
+    <p><strong>Hutchinson</strong>. (1957). Concluding remarks. <em>Cold Spring Harb Symp Quant Biol.</em> 22:415–27. </p>
+    </div>
+    <div id="ref-hutc59hsr">
+    <p><strong>Hutchinson</strong>. (1959). Homage to Santa Rosalia or why are there so many kinds of animals? <em>Am Nat.</em> 93:145. </p>
+    </div>
+    </div>
+
+  </body>
+</html>

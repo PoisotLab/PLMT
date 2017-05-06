@@ -3,6 +3,37 @@
   <head>
     <title>Template for pandoc / markdown manuscripts</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+    body {
+      font-family: "Tinos", "Liberation Serif", serif;
+      width: 600px;
+      max-width: 600px;
+      margin: 0px auto;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Arimo", "Liberation Sans", sans-serif;
+    }
+
+    code, pre {
+      font-family: "Cousine", "Liberation Mono", monospace !important;
+    }
+
+    table {
+      font-family: "Arimo", "Liberation Sans", sans-serif;
+      max-width: 100%;
+      min-width: 50%;
+      width: 70%;
+      margin: 0px auto;
+      border-collapse: collapse;
+   }
+   table, th, td {
+     border: 1px solid black;
+   }
+
+
+    </style>
   </head>
   <body>
 
@@ -80,7 +111,7 @@
     <p>Just type <code>make</code>. If there is a <code>Rmd</code> or <code>Jmd</code> document with the same base name, the makefile will render the markdown document for you. In fact, this document <em>is</em> a <code>Rmd</code> file:</p>
     <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(<span class="kw">rnorm</span>(<span class="dv">250</span>))</code></pre></div>
     <pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-    ## -3.027000 -0.635600 -0.013650  0.007163  0.558000  2.845000</code></pre>
+    ## -3.067000 -0.682000 -0.005754  0.016450  0.768800  2.936000</code></pre>
     <p>Note that the extensions <em>must</em> be <code>Rmd</code> or <code>Jmd</code>, with an uppercase first letter. Of course you will need <code>knitr</code> (for <code>R</code>) or <code>Weave.jl</code> (for <code>julia</code>).</p>
     <p>Because of the way figures are refered to (using the <code>@fig:id</code> syntax), it is better to generate the figure first, and then call it in the text, using <code>fig.show='hide'</code>. The code below will generate fig. <a href="#fig:chunk">2</a>.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">sort</span>(<span class="kw">rnorm</span>(<span class="dv">200</span>)), <span class="dt">type=</span><span class="st">&#39;l&#39;</span>)</code></pre></div>

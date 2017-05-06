@@ -3,6 +3,37 @@
   <head>
     <title>$title$</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+    body {
+      font-family: "Tinos", "Liberation Serif", serif;
+      width: 600px;
+      max-width: 600px;
+      margin: 0px auto;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Arimo", "Liberation Sans", sans-serif;
+    }
+
+    code, pre {
+      font-family: "Cousine", "Liberation Mono", monospace !important;
+    }
+
+    table {
+      font-family: "Arimo", "Liberation Sans", sans-serif;
+      max-width: 100%;
+      min-width: 50%;
+      width: 70%;
+      margin: 0px auto;
+      border-collapse: collapse;
+   }
+   table, th, td {
+     border: 1px solid black;
+   }
+
+
+    </style>
   </head>
   <body>
 

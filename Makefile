@@ -48,9 +48,9 @@ help: #> Show the help
 output/: #> Create the output directory to store the pdf and odt files
 	mkdir -p output
 
-# This rule will, by default, make the draft, the preprint, and the odt
-# document.
-all: draft preprint odt #> Make all the default outputs
+# This rule will, by default, make the draft, the preprint, the raw latex fil,
+# and the odt document.
+all: draft preprint odt latex #> Make all the default outputs
 
 # This rule will create a document with the changes marked. The behavior of this
 # command is affected by the `TAG` variable (which version to compare to), and
@@ -65,7 +65,7 @@ clean: #> Remove the temporary file
 # updated manually. Instead, look at authors.json, infos.json, and ABSTRACT.
 .metadata.yaml: infos.yaml authors.yaml ABSTRACT #> Compile the document metadata in a hidden file
 	node .plmt/metadata.js
-	sed -i '1s/^/---\n/' $@
+	sed -i "" -e '1s/^/---\n/' $@
 	echo "..." >> $@
 
 # This rule will compile the Rmd file to the md file IF there is a Rmd file with
@@ -96,6 +96,8 @@ preprint: output/$(FILE)_preprint.pdf #> Create a pdf using the preprint templat
 
 draft: output/$(FILE)_draft.pdf #> Create a pdf using the draft template
 
+latex: output/$(FILE).tex #> Create a LaTeX standalone document for publishers
+
 odt: output/$(FILE).odt #> Create a LibreOffice document
 
 # Additional rules go here. By default, they are commented, but removing the #
@@ -110,6 +112,9 @@ output/$(FILE)_preprint.pdf: $(MARKED)
 
 output/$(FILE)_draft.pdf: $(MARKED)
 	pandoc $(MARKED) -o $@ $(PFLAGS) --template ./.plmt/templates/draft.template .metadata.yaml
+
+output/$(FILE).tex: $(MARKED)
+	pandoc $(MARKED) -o $@ $(PFLAGS) --template ./.plmt/templates/raw.template .metadata.yaml
 
 output/$(FILE).odt: $(MARKED)
 	pandoc $(MARKED) -o $@ $(PFLAGS) --template ./.plmt/templates/opendocument.template .metadata.yaml

@@ -65,7 +65,7 @@ clean: #> Remove the temporary file
 # updated manually. Instead, look at authors.json, infos.json, and ABSTRACT.
 .metadata.yaml: infos.yaml authors.yaml ABSTRACT #> Compile the document metadata in a hidden file
 	node .plmt/metadata.js
-	sed -i '1s/^/---\n/' $@
+	sed -i "" -e '1s/^/---\n/' $@
 	echo "..." >> $@
 
 # This rule will compile the Rmd file to the md file IF there is a Rmd file with

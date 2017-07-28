@@ -4,7 +4,7 @@
 
 \setcounter{secnumdepth}{5}
 
-\geometry{lmargin=4cm, rmargin=4cm, tmargin=3cm, bmargin=4.5cm}
+\geometry{lmargin=3.5cm, rmargin=3.5cm, tmargin=3cm, bmargin=4.5cm}
 
 \usepackage{lastpage}
 

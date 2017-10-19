@@ -17,7 +17,6 @@ Just type `make` to see a list of all possible commands:
 ~~~
 all                 Make all the default outputs
 clean               Remove the temporary file
-dependencies        Install the required pandoc filters
 diff                Create the pdf with track changes
 draft               Create a pdf using the draft template
 help                Show the help
@@ -42,7 +41,7 @@ Yes, with a few additional filters.
 - GNU `make`
 - an idea for a manuscript
 - `knitr`, `Weave.jl` if you need to render these sort of things
-- some pandoc filters (type `make dependencies` to install them)
+- `pandoc-crossref` and `pandoc-citeproc`
 
 ## Roadmap
 

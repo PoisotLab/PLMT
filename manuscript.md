@@ -25,7 +25,9 @@ email addres for the corresponding author, and affiliations. The `infos.yaml`
 file is for the manuscript title, keywords, etc. Finally, the `ABSTRACT` file
 has the abstract. It can contain markdown formatting.
 
-# Citations, tables, figures, ...
+# Citations, tables, figures, ... {#sec:citation}
+
+You can give sections identifiers with `{#sec:id}`, and cite them with `@sec:id` -- for example, this is section @sec:citation.
 
 ## Tables
 
@@ -125,8 +127,8 @@ summary(rnorm(250))
 ```
 
 ```
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## -2.3210 -0.5724  0.1356  0.1311  0.8075  3.0701
+##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## -2.723521 -0.712167 -0.007038 -0.049100  0.662052  3.038759
 ```
 
 Note that the extensions *must* be `Rmd` or `Jmd`, with an uppercase first

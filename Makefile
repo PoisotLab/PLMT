@@ -24,7 +24,7 @@ MARKED= ./.plmt/processed.md
 
 # PFLAGS is the list of pandoc filters and options required to make the
 # documents. You can add some, but it is probably wise not to remove any.
-PFLAGS= --filter pandoc-fignos --filter pandoc-tablenos --filter pandoc-eqnos --filter pandoc-citeproc --listings --bibliography $(BIB) --csl $(CSL)
+PFLAGS= --filter pandoc-crossref --filter pandoc-citeproc --listings --bibliography $(BIB) --csl $(CSL)
 
 # TAG is the version of the git tag or commit against which the track-changed
 # pdf should be built. By default, it is the latest commit (so you can see your
@@ -147,8 +147,3 @@ output/diff_$(FILE)_$(TAG)_$(AS).pdf: revised.md
 	rm diff.ps
 	rm {old,new,diff}.tex
 	mv diff.pdf $@
-
-# This installs the python dependencies. Might have to be run with `sudo make
-# dependencies` depending on your system.
-dependencies: #> Install the required pandoc filters
-	pip install pandoc-fignos pandoc-eqnos pandoc-tablenos

@@ -1,4 +1,4 @@
-\documentclass[10pt,serif]{article}
+\documentclass[11pt,serif]{article}
 
 \input{.plmt/plmt.tex}
 

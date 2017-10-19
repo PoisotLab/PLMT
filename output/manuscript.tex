@@ -60,8 +60,6 @@
   see the different options.
 \end{abstract}
 
-<<<<<<< HEAD
-=======
 % pandoc-xnos: cleveref fakery
 \newcommand{\plusnamesingular}{}
 \newcommand{\starnamesingular}{}
@@ -80,7 +78,6 @@
 \crefformat{equation}{eq.~#2#1#3}
 \Crefformat{equation}{Equation~#2#1#3}
 
->>>>>>> b4c81ad06ea8cb76f643342400d46edf705d8cee
 This project intends to make the generation of high-quality preprints
 from markdown, R markdown, and Julia markdown documents easy. Once
 downloaded, type \lstinline!make! to see the output. This will generate
@@ -111,23 +108,14 @@ is for the manuscript title, keywords, etc. Finally, the
 \lstinline!ABSTRACT! file has the abstract. It can contain markdown
 formatting.
 
-<<<<<<< HEAD
-\section{Citations, tables, figures, \ldots{}}\label{sec:citation}
-
-You can give sections identifiers with \lstinline!{#sec:id}!, and cite
-them with \lstinline!@sec:id! -- for example, this is section
-sec.~\ref{sec:citation}.
-=======
 \section{Citations, tables, figures,
 \ldots{}}\label{citations-tables-figures}
->>>>>>> b4c81ad06ea8cb76f643342400d46edf705d8cee
 
 \subsection{Tables}\label{tables}
 
 Table legends go on the line after the table itself. To generate a
 reference to the table, use \lstinline!{#tbl:id}! -- then, in the text,
 you can use \lstinline!{@tbl:id}! to refer to the table. For example,
-<<<<<<< HEAD
 the table below is tbl.~\ref{tbl:id}. You can remove the \emph{table} in
 front by using \lstinline"!@tbl:id", or force it to be capitalized with
 \lstinline!\*tbl:id!.
@@ -138,17 +126,6 @@ front by using \lstinline"!@tbl:id", or force it to be capitalized with
 \lstinline!id! -- we can refer to it using \lstinline!{@tbl:id}!. Note
 that even if the table legend is written below the table itself, it will
 appear on top in the compiled document. }\tabularnewline
-=======
-the table below is \xrefname{table}\cref{tbl:id}. You can remove the
-\emph{table} in front by using \lstinline"!@tbl:id", or force it to be
-capitalized with \lstinline!\*tbl:id!.
-
-\begin{longtable}[]{@{}lr@{}}
-\caption{This is a table, and its identifier is \lstinline!id! -- we can
-refer to it using \lstinline!{@tbl:id}!. Note that even if the table
-legend is written below the table itself, it will appear on top in the
-compiled document. \label{tbl:id}}\tabularnewline
->>>>>>> b4c81ad06ea8cb76f643342400d46edf705d8cee
 \toprule
 Using & produces\tabularnewline
 \midrule
@@ -157,15 +134,9 @@ Using & produces\tabularnewline
 Using & produces\tabularnewline
 \midrule
 \endhead
-<<<<<<< HEAD
-\lstinline!@tbl:id! & tbl.~\ref{tbl:id}\tabularnewline
-\lstinline"!@tbl:id" & !tbl.~\ref{tbl:id}\tabularnewline
-\lstinline!\*@tbl:id! & *tbl.~\ref{tbl:id}\tabularnewline
-=======
 \lstinline!@tbl:id! & \xrefname{table}\cref{tbl:id}\tabularnewline
 \lstinline"!@tbl:id" & \ref{tbl:id}\tabularnewline
 \lstinline!\*@tbl:id! & \Xrefname{Table}\Cref{tbl:id}\tabularnewline
->>>>>>> b4c81ad06ea8cb76f643342400d46edf705d8cee
 \bottomrule
 \end{longtable}
 
@@ -176,11 +147,7 @@ Equations can be referenced using the same syntax as tables, using the
 
 \begin{equation} y = mx + b \label{eq:id}\end{equation}
 
-<<<<<<< HEAD
-We can refer to eq.~\ref{eq:id} in the text.
-=======
 We can refer to \xrefname{eq.}\cref{eq:id} in the text.
->>>>>>> b4c81ad06ea8cb76f643342400d46edf705d8cee
 
 \subsection{Adding references}\label{adding-references}
 
@@ -193,16 +160,6 @@ like Hutchinson (1959), and in brackets (Hutchinson 1957) can be used.
 
 Figures can be used with the usual markdown syntax. After the path, you
 can use \lstinline!{#fig:id width=50%}! to specify the width and the
-<<<<<<< HEAD
-reference. See tbl.~\ref{tbl:id} for how to cite. The code below in the
-markdown source produces fig.~\ref{fig:id}.
-
-\begin{figure}
-\centering
-\includegraphics[width=1.00000\textwidth]{figure/histogram-1.pdf}
-\caption{This is a figure. Figures can have identifiers, and the width
-can be changed as well.}\label{fig:id}
-=======
 reference. See \xrefname{table}\cref{tbl:id} for how to cite. The code
 below in the markdown source produces \xrefname{fig.}\cref{fig:id}.
 
@@ -211,7 +168,6 @@ below in the markdown source produces \xrefname{fig.}\cref{fig:id}.
 \includegraphics[width=1.00000\textwidth]{figure/histogram-1.pdf}
 \caption{This is a figure. Figures can have identifiers, and the width
 can be changed as well.\label{fig:id}}
->>>>>>> b4c81ad06ea8cb76f643342400d46edf705d8cee
 \end{figure}
 
 \section{Other elements}\label{other-elements}
@@ -269,12 +225,8 @@ summary(rnorm(250))
 \end{lstlisting}
 
 \begin{lstlisting}
-##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-<<<<<<< HEAD
+##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max.
 ## -2.723521 -0.712167 -0.007038 -0.049100  0.662052  3.038759
-=======
-## -2.900559 -0.645437 -0.033311  0.008348  0.670034  2.762948
->>>>>>> b4c81ad06ea8cb76f643342400d46edf705d8cee
 \end{lstlisting}
 
 Note that the extensions \emph{must} be \lstinline!Rmd! or
@@ -285,11 +237,8 @@ Note that the extensions \emph{must} be \lstinline!Rmd! or
 Because of the way figures are refered to (using the \lstinline!@fig:id!
 syntax), it is better to generate the figure first, and then call it in
 the text, using \lstinline!fig.show='hide'!. The code below will
-<<<<<<< HEAD
-generate fig.~\ref{fig:chunk}.
-=======
 generate \xrefname{fig.}\cref{fig:chunk}.
->>>>>>> b4c81ad06ea8cb76f643342400d46edf705d8cee
+generate fig.~\ref{fig:chunk}.
 
 \begin{lstlisting}[language=R]
 plot(sort(rnorm(200)), type='l')
@@ -297,51 +246,30 @@ plot(sort(rnorm(200)), type='l')
 
 You can then use this figure:
 
-<<<<<<< HEAD
-\begin{figure}
-=======
 \begin{figure}[htbp]
->>>>>>> b4c81ad06ea8cb76f643342400d46edf705d8cee
 \centering
 \includegraphics[width=1.00000\textwidth]{figure/testfig-1.pdf}
 \caption{This is the figure created by the chunck \lstinline!testfig!,
 so it is in \lstinline!figure/testfig-1!. You can use different
 \lstinline!dev! in the knitr chunk options, so it is possible to
-<<<<<<< HEAD
-generate pdf or png figures.}\label{fig:chunk}
-=======
 generate pdf or png figures.\label{fig:chunk}}
->>>>>>> b4c81ad06ea8cb76f643342400d46edf705d8cee
 \end{figure}
 
 With \lstinline!knitr!, the \lstinline!kable! function can create
 tables. If you add the caption paragraph immediately below, then these
-<<<<<<< HEAD
-tables can be cited. This is how we produce tbl.~\ref{tbl:knit}.
-=======
 tables can be cited. This is how we produce
 \xrefname{table}\cref{tbl:knit}.
->>>>>>> b4c81ad06ea8cb76f643342400d46edf705d8cee
 
 \begin{lstlisting}[language=R]
 data(iris)
 kable(head(iris))
 \end{lstlisting}
 
-<<<<<<< HEAD
-\hypertarget{tbl:knit}{}
-\begin{longtable}[]{@{}rrrrl@{}}
-\caption{\label{tbl:knit}This is a table, and its identifier is
-\lstinline!knit! -- we can refer to it using \lstinline!{@tbl:knit}!.
-Note that even if the table legend is written below the table itself, it
-will appear on top in the compiled document. }\tabularnewline
-=======
 \begin{longtable}[]{@{}rrrrl@{}}
 \caption{This is a table, and its identifier is \lstinline!knit! -- we
 can refer to it using \lstinline!{@tbl:knit}!. Note that even if the
 table legend is written below the table itself, it will appear on top in
 the compiled document. \label{tbl:knit}}\tabularnewline
->>>>>>> b4c81ad06ea8cb76f643342400d46edf705d8cee
 \toprule
 Sepal.Length & Sepal.Width & Petal.Length & Petal.Width &
 Species\tabularnewline

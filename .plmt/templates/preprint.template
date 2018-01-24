@@ -1,33 +1,14 @@
-\documentclass[11pt,serif]{article}
+\documentclass[paper=letter]{scrartcl}
 
 \input{.plmt/plmt.tex}
 
 \setcounter{secnumdepth}{5}
 
-\geometry{lmargin=3.5cm, rmargin=3.5cm, tmargin=3cm, bmargin=4.5cm}
-
 \usepackage{lastpage}
-
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhead[LO,RE]{}
-\fancyhead[LE,RO]{}
-\fancyfoot[C]{}
-\fancyfoot[LO,RE]{$if(short)$\small \emph{$short$}$endif$}
-\fancyfoot[LE,RO]{\small page \thepage\ of \pageref{LastPage}}
-\renewcommand{\headrulewidth}{0pt}
 
 \makeatletter
 \def\fps@figure{tbp}
 \makeatother
-
-\usepackage{titlesec}
-\titleformat{\section}{\Large}{\makebox[0cm][r]{\thesection\hspace{1em}}}{0em}{\scshape\lowercase}
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
-\titleformat{\subsection}{\large}{\thesubsection}{.6em}{\itshape}
-\titlespacing*{\subsection}{0pt}{\baselineskip}{\baselineskip}
-\titleformat{\subsubsection}{\normalsize}{\thesubsubsection}{.6em}{\itshape}
-\titlespacing*{\subsubsection}{0pt}{\parskip}{0.5\parskip}
 
 \begin{document}
 

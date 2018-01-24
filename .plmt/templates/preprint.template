@@ -1,4 +1,5 @@
 \documentclass[paper=letter]{scrartcl}
+\KOMAoptions{captions=bottombeside}
 
 \input{.plmt/plmt.tex}
 

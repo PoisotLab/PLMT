@@ -2,6 +2,9 @@
 .plmt/processed.md
 revised.md
 
+# Pandoc filters
+pandoc-*
+
 # We want to commit the pdf, but not the odt (we don't want the diff files either)
 output/*.odt
 output/diff*.pdf

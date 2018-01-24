@@ -128,10 +128,10 @@ summary(rnorm(250))
 
 ```
 <<<<<<< HEAD
-##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max.
 ## -2.723521 -0.712167 -0.007038 -0.049100  0.662052  3.038759
 =======
-##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
 ## -2.3210 -0.5724  0.1356  0.1311  0.8075  3.0701
 >>>>>>> b4c81ad06ea8cb76f643342400d46edf705d8cee
 ```
@@ -164,14 +164,14 @@ kable(head(iris))
 
 
 
-| Sepal.Length| Sepal.Width| Petal.Length| Petal.Width|Species |
-|------------:|-----------:|------------:|-----------:|:-------|
-|          5.1|         3.5|          1.4|         0.2|setosa  |
-|          4.9|         3.0|          1.4|         0.2|setosa  |
-|          4.7|         3.2|          1.3|         0.2|setosa  |
-|          4.6|         3.1|          1.5|         0.2|setosa  |
-|          5.0|         3.6|          1.4|         0.2|setosa  |
-|          5.4|         3.9|          1.7|         0.4|setosa  |
+| Sepal.Length | Sepal.Width | Petal.Length | Petal.Width | Species |
+|-------------:|------------:|-------------:|------------:|:--------|
+|          5.1 |         3.5 |          1.4 |         0.2 | setosa  |
+|          4.9 |         3.0 |          1.4 |         0.2 | setosa  |
+|          4.7 |         3.2 |          1.3 |         0.2 | setosa  |
+|          4.6 |         3.1 |          1.5 |         0.2 | setosa  |
+|          5.0 |         3.6 |          1.4 |         0.2 | setosa  |
+|          5.4 |         3.9 |          1.7 |         0.4 | setosa  |
 Table: This is a table, and its identifier is `knit` -- we can refer to it using
 `{@tbl:knit}`. Note that even if the table legend is written below the table
 itself, it will appear on top in the compiled document. {#tbl:knit}

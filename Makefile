@@ -24,7 +24,7 @@ MARKED= ./.plmt/processed.md
 
 # PFLAGS is the list of pandoc filters and options required to make the
 # documents. You can add some, but it is probably wise not to remove any.
-PFLAGS= --filter pandoc-crossref --filter pandoc-citeproc --listings --bibliography $(BIB) --csl $(CSL)
+PFLAGS= --filter pandoc-crossref --filter pandoc-citeproc --listings --bibliography $(BIB) --csl $(CSL) --filter .plmt/filters/test.py
 
 # TAG is the version of the git tag or commit against which the track-changed
 # pdf should be built. By default, it is the latest commit (so you can see your
@@ -38,6 +38,9 @@ AS=preprint
 
 # This is makefile jargon, don't sweat it.
 .PHONY: all output/ help dependencies
+
+dependencies:
+	pip3 install panflute
 
 # By default, we wish only to help!
 .DEFAULT_GOAL := help
@@ -65,7 +68,7 @@ clean: #> Remove the temporary file
 # updated manually. Instead, look at authors.json, infos.json, and ABSTRACT.
 .metadata.yaml: infos.yaml authors.yaml ABSTRACT #> Compile the document metadata in a hidden file
 	node .plmt/metadata.js
-	sed -i "" -e '1s/^/---\n/' $@
+	sed -i '1s/^/---\n/' $@
 	echo "..." >> $@
 
 # This rule will compile the Rmd file to the md file IF there is a Rmd file with

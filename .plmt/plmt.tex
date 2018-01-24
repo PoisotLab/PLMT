@@ -1,13 +1,39 @@
-\usepackage[table]{xcolor}
+\usepackage[table,dvipsnames]{xcolor}
 \usepackage{ccicons}
 
-% Colors
-\input{.plmt/plmt-color.tex}
+\usepackage{listings}
+\lstset{
+  numbers=left,
+  tabsize=1,
+  basicstyle=\small\ttfamily,
+  breaklines=true
+}
+\newcommand{\passthrough}[1]{#1}
 
-% pgf
-\input{.plmt/plmt-pgf.tex}
+% Page number, etc
+\definecolor{meta}{rgb}{0.4,0.4,0.4}
 
-\usepackage[hidelinks]{hyperref}
+% Palette
+\definecolor{s1}{RGB}{130,64,113}
+\definecolor{s2}{RGB}{44,109,156}
+\definecolor{s3}{RGB}{84,130,43}
+\definecolor{s4}{RGB}{231,117,46}
+\definecolor{s5}{RGB}{180,66,68}
+
+% Critic
+\colorlet{del}{s5}
+\colorlet{add}{s3}
+\colorlet{hlh}{s4}
+\colorlet{not}{s1}
+
+% Accent color
+\colorlet{accent}{s2}
+
+% Title background
+\definecolor{bg}{RGB}{218, 228, 236}
+
+
+\usepackage[hidelinks,unicode=true]{hyperref}
 \usepackage{etoolbox}
 \usepackage{graphicx}
 \usepackage{adjustbox}
@@ -24,9 +50,6 @@
 
 % Fonts
 \input{.plmt/plmt-fonts.tex}
-
-% Code highlight and colors
-\input{.plmt/plmt-code.tex}
 
 \usepackage[nooneline]{caption}
 \captionsetup{font={small}, labelfont={bf}, format=plain, indention=4mm, labelsep=quad}

@@ -69,8 +69,6 @@ Figures can be used with the usual markdown syntax. After the path, you can use
 `{#fig:id width=50%}` to specify the width and the reference. See @tbl:id for
 how to cite. The code below in the markdown source produces @fig:id.
 
-
-
 ![This is a figure. Figures can have identifiers, and the width can be changed as well.](figure/histogram-1.pdf){#fig:id width=100%}
 
 # Other elements
@@ -118,19 +116,7 @@ Note that CriticMarkup is *not* rendered into OpenDocument.
 ## Using with knitr, Weave.jl, ...
 
 Just type `make`. If there is a `Rmd` or `Jmd` document with the same base name,
-the makefile will render the markdown document for you. In fact, this document
-*is* a `Rmd` file:
-
-
-```r
-summary(rnorm(250))
-```
-
-```
-##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max.
-## -2.723521 -0.712167 -0.007038 -0.049100  0.662052  3.038759
-
-```
+the makefile will render the markdown document for you.
 
 Note that the extensions *must* be `Rmd` or `Jmd`, with an uppercase first
 letter. Of course you will need `knitr` (for `R`) or `Weave.jl` (for `julia`).
@@ -153,13 +139,6 @@ paragraph immediately below, then these tables can be cited. This is how we
 produce @tbl:knit.
 
 
-```r
-data(iris)
-kable(head(iris))
-```
-
-
-
 | Sepal.Length | Sepal.Width | Petal.Length | Petal.Width | Species |
 |-------------:|------------:|-------------:|------------:|:--------|
 |          5.1 |         3.5 |          1.4 |         0.2 | setosa  |
@@ -168,8 +147,7 @@ kable(head(iris))
 |          4.6 |         3.1 |          1.5 |         0.2 | setosa  |
 |          5.0 |         3.6 |          1.4 |         0.2 | setosa  |
 |          5.4 |         3.9 |          1.7 |         0.4 | setosa  |
-Table: This is a table, and its identifier is `knit` -- we can refer to it using
-`{@tbl:knit}`. Note that even if the table legend is written below the table
-itself, it will appear on top in the compiled document. {#tbl:knit}
+
+Table: This is a table, and its identifier is `knit` -- we can refer to it using `{@tbl:knit}`. Note that even if the table legend is written below the table itself, it will appear on top in the compiled document. {#tbl:knit}
 
 # References

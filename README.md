@@ -4,6 +4,8 @@ This template is a way to make writing academic papers using `pandoc` and
 `markdown` simple. Feel free to look at the pdf in the `output` folder to see
 what it can do.
 
+**This requires pandoc 2.0**
+
 ## Getting started
 
 Edit the `ABSTRACT` file, change the authors names in `authors.yaml`, and the

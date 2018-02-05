@@ -1,49 +1,110 @@
 \documentclass[10pt,oneside]{article}
 
+\linespread{1.16}
+
 \input{.plmt/plmt.tex}
-
-\usepackage{float}
-\floatplacement{figure}{t}
-
-\floatsetup[figure]{margins=hangright,
-                    capposition=beside,
-                    capbesideposition={center,outside},
-                    floatwidth=\textwidth}
 
 \usepackage[footnote]{snotez}
 \setsidenotes{text-mark-format=\textsuperscript{\normalfont#1},
               note-mark-format=(#1),
               note-mark-sep=\enskip}
 
+\usepackage{floatrow}
+\floatsetup[figure]{margins=hangright,
+              facing=no,
+              capposition=beside,
+              capbesideposition={center,outside},
+              floatwidth=\textwidth}
+\floatsetup[table]{margins=hangoutside,
+             facing=yes,
+             capposition=beside,
+             capbesideposition={center,outside},
+             floatwidth=\textwidth}
 
 \setcounter{secnumdepth}{5}
 
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhead{}
-\fancyfoot{}
-\lhead{}
-\chead{}
-%\rhead{\today}
-\lfoot{$title$}
-\cfoot{}
-\rfoot{p. \thepage}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0.1pt}
-
-\usepackage{lastpage}
-
 \makeatletter
-\def\fps@figure{tbp}
+\def\fps@figure{tp}
 \makeatother
+
+\usepackage{pagecolor}
+\usepackage{afterpage}
+
+\usepackage{titlesec}
+
+\titleformat{\section}[block]
+{\normalfont\large\sffamily}
+{\thesection}{.5em}{\titlerule\\[.8ex]\bfseries}
+
+\titleformat{\subsection}[runin]
+{\normalfont\fontseries{b}\selectfont\filright\sffamily}
+{\thesubsection.}{.5em}{}
+
+
+\titleformat{\subsubsection}[runin]
+{\normalfont\itshape\sffamily}{(\thesubsubsection)}{1em}{}
 
 \begin{document}
 
+\begin{titlepage}
+
+\newgeometry{left=6cm}
+
+\definecolor{titlepage-color}{HTML}{F6F6F6}
+\newpagecolor{titlepage-color}\afterpage{\restorepagecolor}
+\newcommand{\colorRule}[3][black]{\textcolor[HTML]{#1}{\rule{#2}{#3}}}
+\begin{flushleft}
+\noindent
+\\[-1em]
+\color[HTML]{4F4F4F}
+\makebox[0pt][l]{\colorRule[6F6F6F]{1.3\textwidth}{2pt}}
+\par
+\noindent
+
+{ \setstretch{1.4}
+\vfill
+\noindent {\huge \textbf{\textsf{$title$}}}
+\vskip 2em
+\noindent
+{\large
+$if(author)$
+\begin{flushleft}
+$for(author)$
+$if(author.orcid)$
+\href{http://orcid.org/$author.orcid$}{$author.given$ $author.family$}
+$else$
+\mbox{$author.given$ $author.family$}
+$endif$
+$sep$\quad
+$endfor$
+\end{flushleft}
+\bigskip
+$endif$
+\vfill
+}
+
+{\ccby}\\
+{\emph{This work is licensed under a %
+Creative Commons Attribution 4.0 Unported License.}}%
+\\
+\textsf{\today}}
+\end{flushleft}
+\end{titlepage}
+\restoregeometry
+
 \thispagestyle{empty}
 
-{\bfseries\huge $title$}
+$if(abstract)$
+\textbf{Abstract}:\,$abstract$
+\vskip 1em
+$endif$
+$if(keyword)$
+{\small{\bfseries Keywords}:
+$for(keyword)$$keyword$ $sep$ - $endfor$\vskip 4em
+}
+$endif$
 
-\vskip 5em
+\vfill
 
 $if(author)$
 \begin{flushleft}
@@ -67,31 +128,9 @@ $if(affiliation)$
 $for(affiliation)$
 \textbf{$affiliation.id$}:~$affiliation.text$$sep$;\quad$endfor$\normalsize$endif$
 
-\vfill
-
-$if(abstract)$
-$abstract$
-\vskip 1em
-$endif$
-$if(keyword)$
-{\small{\bfseries Keywords:}
-$for(keyword)$$keyword$ $sep$ - $endfor$\vskip 4em
-}
-$endif$
-
-\vfill
-
-{\small%
-{\ccby}\\
-{\emph{This work is licensed under a %
-Creative Commons Attribution 4.0 Unported License.}}%
-\\
-$if(author)$
+{\small $if(author)$\vskip 1em
 $for(author)$
-$if(author.email)$Correspondence to $author.given$ $author.family$ -- \texttt{$author.email$}$endif$$endfor$$endif$\\
-Latest update on \today%
-}%
-
+$if(author.email)$Correspondence to $author.given$ $author.family$ -- \texttt{$author.email$}$endif$$endfor$$endif$}
 \cleardoublepage
 
 $body$

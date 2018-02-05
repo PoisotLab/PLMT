@@ -148,4 +148,64 @@ produce @tbl:knit.
 
 Table: This is a table, and its identifier is `knit` -- we can refer to it using `{@tbl:knit}`. Note that even if the table legend is written below the table itself, it will appear on top in the compiled document. {#tbl:knit}
 
+# Text example
+
+We posit that four simple rules govern the evolution of networks. First, every
+network originally consists of just two species sharing a single interaction;
+for example, a plant and its herbivore. Second, a speciation event happens at
+the top level (*e.g.* the herbivore) with probability $p$, or at the bottom
+level with probability $1-p$. Third, the incipient species starts with all
+interactions of its ancestor. Fourth, some of these interactions are lost with
+probability $\varepsilon(\lambda, k, c)$, which allows interactions---that are
+gained through speciation---to be lost either at a fixed rate $\lambda$ or as a
+function of the incipient species' degree $k$. The $c$ parameter modulates this
+relationship further by influencing whether high degree of an ancestor
+increases, or decreases, the probability of the incipient species losing
+interactions. We have used the following formulation for $\varepsilon$:
+
+$$\varepsilon(\lambda, k, c) = \left(1+\left(\frac{1}{\lambda}-1\right)\times c^{k-1}\right)^{-1} \,.  $${#eq:epsilon}
+
+In this formulation, $k$ is the number of interactions of the incipient species,
+$\lambda$ is the *basal* rate of interaction loss, and $c$ is a parameter
+regulating whether species with more interactions tend to gain or lose
+interactions over time. Negative values of $c$ imply that *rich get richer*,
+*i.e.* species with more interactions tend to conserve them more over
+speciation. The special case of $c = 0$ corresponds to no relationship between
+the degree of a species and its probability of losing or retaining an
+interaction over speciation. The resulting probability of interaction loss, and
+its consequences on degree, is shown in figure. The values of $\varepsilon$
+belong to $]0;1[$. Note that, because species are duplicated upon a speciation
+event, the network still grows over time. If an incipient species should lose
+all of its interactions, then it fails to establish.
+
+These four rules translate directly into steps for the model: pick a level at
+random, select a species to duplicate, assess the survival of interactions of
+the incipient, and add the incipient to the network. These are performed a fixed
+number of time -- we impose an upper limit to the richness at each level, and
+when this limit is reached, the incipient species replaces one of the resident
+species at random. An equilibrium for the measures of network structure (see
+next section) is reached within 1000 timesteps. For all situations, we recorded
+the network after 5000 iterations.
+
+## Network measures
+
+### Connectance
+
+Connectance, defined as the ratio of realized interactions on the total number
+of potential interactions, is one of the most common descriptor of network
+structure. In a bipartite network with $T$ species at the top, and $B$ at the
+bottom, having a total of $L$ interactions, it is defined as $Co = L/(T\times
+B)$. Connectance has a lower bound, as the network cannot have fewer
+interactions that the number of species in its more speciose level -- the
+minimal connectance is therefore $c_m = \text{max}(T,B)$. This makes the
+connectance of networks of different sizes difficult to compare, especially
+since bipartite networks tends to have a low connectance. For this reason, we
+used a corrected version of connectance, defined as
+
+$$Co^\star=\frac{L-c_m}{T\times B-c_m} \,.$${#eq:cstar}
+
+This takes values between 0 (the network has the minimal number of interactions)
+and 1 (all species are connected), but is robust to variations in species
+richness.
+
 # References

@@ -25,10 +25,6 @@ email addres for the corresponding author, and affiliations. The `infos.yaml`
 file is for the manuscript title, keywords, etc. Finally, the `ABSTRACT` file
 has the abstract. It can contain markdown formatting.
 
-# Citations, tables, figures, ... {#sec:citation}
-
-You can give sections identifiers with `{#sec:id}`, and cite them with `@sec:id` -- for example, this is section @sec:citation.
-
 ## Tables
 
 Table legends go on the line after the table itself. To generate a reference to
@@ -63,13 +59,15 @@ References are cited with `@key`, where `key` is the unique identifier of the
 reference. Both inline, like @hutc59hsr, and in brackets [@hutc57cr] can be
 used.
 
+You can also have footnotes.^[this is a footnote -- it is actually rendered as a sidenote in the preprint format.]
+
 ## Figures
 
 Figures can be used with the usual markdown syntax. After the path, you can use
 `{#fig:id width=50%}` to specify the width and the reference. See @tbl:id for
 how to cite. The code below in the markdown source produces @fig:id.
 
-![This is a figure. Figures can have identifiers, and the width can be changed as well.](figure/histogram-1.pdf){#fig:id width=100%}
+![This is a figure. Figures can have identifiers, and the width can be changed as well. This legend is a bit long, to show what happens in the preprint mode (it continues in the margin below the limit of the figure).](figure/histogram-1.pdf){#fig:id}
 
 # Other elements
 
@@ -132,7 +130,7 @@ plot(sort(rnorm(200)), type='l')
 
 You can then use this figure:
 
-![This is the figure created by the chunck `testfig`, so it is in `figure/testfig-1`. You can use different `dev` in the knitr chunk options, so it is possible to generate pdf or png figures.](figure/testfig-1.pdf){#fig:chunk width=100%}
+![This is the figure created by the chunck `testfig`, so it is in `figure/testfig-1`. You can use different `dev` in the knitr chunk options, so it is possible to generate pdf or png figures.](figure/testfig-1.pdf){#fig:chunk}
 
 With `knitr`, the `kable` function can create tables. If you add the caption
 paragraph immediately below, then these tables can be cited. This is how we

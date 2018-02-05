@@ -1,5 +1,6 @@
 \usepackage[table,dvipsnames]{xcolor}
 \usepackage{ccicons}
+\usepackage{floatrow}
 
 \usepackage{listings}
 \lstset{
@@ -35,24 +36,29 @@
 
 \usepackage[hidelinks,unicode=true]{hyperref}
 \usepackage{etoolbox}
-\usepackage{graphicx}
+
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
 \usepackage{adjustbox}
 
-\makeatletter
-\def\ScaleIfNeeded{%
-  \ifdim\Gin@nat@width>\linewidth
-    \linewidth
-  \else
-    \Gin@nat@width
-  \fi
-}
-\makeatother
 
 % Fonts
 \input{.plmt/plmt-fonts.tex}
 
 \usepackage[nooneline]{caption}
-\captionsetup{font={small}, labelfont={bf}, format=plain, indention=4mm, labelsep=quad}
+\captionsetup{
+  font={small},
+  labelfont={bf},
+  format=plain,
+  labelsep=quad}
 
 % Spacing
 \usepackage{setspace}
@@ -65,7 +71,15 @@
 \usepackage{csquotes}
 
 % Geometry block
-\usepackage[letterpaper]{geometry}
+%usepackage[letterpaper]{geometry}
+\usepackage[includemp,
+            letterpaper,
+            top=2.170cm,
+            bottom=2.510cm,
+            inner=1.8835cm,
+            outer=1.3835cm,
+            marginparwidth=4.5cm,
+            marginparsep=1cm]{geometry}
 
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 

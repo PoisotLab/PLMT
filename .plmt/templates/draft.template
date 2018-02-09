@@ -1,8 +1,112 @@
 \documentclass[11pt,serif]{article}
 
-\input{.plmt/plmt.tex}
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{ccicons}
 
-\geometry{margin=2.5cm}
+\usepackage{listings}
+\lstset{
+  numbers=left,
+  tabsize=1,
+  basicstyle=\small\ttfamily,
+  breaklines=true
+}
+\newcommand{\passthrough}[1]{#1}
+
+% Page number, etc
+\definecolor{meta}{rgb}{0.4,0.4,0.4}
+
+% Palette
+\definecolor{s1}{RGB}{130,64,113}
+\definecolor{s2}{RGB}{44,109,156}
+\definecolor{s3}{RGB}{84,130,43}
+\definecolor{s4}{RGB}{231,117,46}
+\definecolor{s5}{RGB}{180,66,68}
+
+% Critic
+\colorlet{del}{s5}
+\colorlet{add}{s3}
+\colorlet{hlh}{s4}
+\colorlet{not}{s1}
+
+% Accent color
+\colorlet{accent}{s2}
+
+% Title background
+\definecolor{bg}{RGB}{218, 228, 236}
+
+\usepackage[hidelinks,unicode=true]{hyperref}
+\usepackage{etoolbox}
+
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+\usepackage{adjustbox}
+
+
+% Fonts
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textgreek}
+\usepackage[greek,english]{babel}
+\usepackage[activate={true,nocompatibility},final=true,kerning=true,spacing=true,tracking=true,shrink=30,stretch=30,factor=0]{microtype}
+
+
+\usepackage[nooneline]{caption}
+\captionsetup{
+  font={small},
+  labelfont={bf},
+  format=plain,
+  labelsep=quad}
+
+% Spacing
+\usepackage{setspace}
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0em}
+
+\input{.plmt/plmt-marks.tex}
+
+\usepackage{booktabs, tabularx, longtable}
+\usepackage{csquotes}
+
+% Geometry block
+\usepackage[letterpaper,
+            top=0.8in,
+            bottom=2.2cm,
+            inner=0.8in,
+            outer=0.8in]{geometry}
+
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\renewcommand\UrlFont{\color{s3}\rmfamily\bfseries}
+
+\usepackage{authblk}
+
+\usepackage{amsmath}
+
+\usepackage{stix}
+
+\title{$title$}
+
+\renewcommand\Authsep{, }
+\renewcommand\Authand{ and }
+\renewcommand\Authands{, and }
+
+$if(author)$
+$for(author)$
+\author[$for(author.affiliations)$$author.affiliations$$sep$,$endfor$]{$author.given$ $author.family$}
+$endfor$
+$endif$
+
+$if(affiliation)$$for(affiliation)$
+\affil[$affiliation.id$]{$affiliation.text$}
+$endfor$$endif$
 
 \usepackage[right]{lineno}
 \linenumbers
@@ -11,34 +115,7 @@
 \begin{document}
 
 \thispagestyle{empty}
-
-{\bfseries\huge $title$}
-
-\vskip 5em
-
-$if(author)$
-\begin{flushleft}
-$for(author)$
-$if(author.orcid)$
-\href{http://orcid.org/$author.orcid$}{$author.given$ $author.family$}
-$else$
-\mbox{$author.given$ $author.family$}
-$endif$
-$if(author.affiliations)$
-~\emph{$for(author.affiliations)$$author.affiliations$$sep$,$endfor$}
-$endif$
-$sep$\quad
-$endfor$
-\end{flushleft}
-\bigskip
-$endif$
-
-$if(affiliation)$
-\small
-$for(affiliation)$
-\textbf{$affiliation.id$}:~$affiliation.text$$sep$;\quad$endfor$\normalsize$endif$
-
-\vfill
+\maketitle
 
 $if(abstract)$
 $abstract$
@@ -50,19 +127,9 @@ $for(keyword)$$keyword$ $sep$ - $endfor$\vskip 4em
 }
 $endif$
 
-\vfill
-
-{\small%
-{\ccby}\\
-{\emph{This work is licensed under a %
-Creative Commons Attribution 4.0 Unported License.}}%
-\\
 $if(author)$
 $for(author)$
 $if(author.email)$Correspondence to $author.given$ $author.family$ -- \texttt{$author.email$}$endif$$endfor$$endif$
-\newline
-\texttt{$date$}
-}%
 
 \cleardoublepage
 

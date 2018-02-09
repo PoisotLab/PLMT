@@ -2,7 +2,109 @@
 
 \linespread{1.16}
 
-\input{.plmt/plmt.tex}
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{ccicons}
+
+% Header and footers
+\usepackage{fancyhdr}
+\fancypagestyle{firstpage}
+{
+   \fancyhf{}
+   \renewcommand{\headrulewidth}{0pt}
+   \fancyfoot[R]{\footnotesize\ccby}
+   \fancyfoot[L]{\footnotesize\today}
+}
+
+\usepackage{listings}
+\lstset{
+  numbers=left,
+  tabsize=1,
+  basicstyle=\small\ttfamily,
+  breaklines=true
+}
+\newcommand{\passthrough}[1]{#1}
+
+% Page number, etc
+\definecolor{meta}{rgb}{0.4,0.4,0.4}
+
+% Palette
+\definecolor{s1}{RGB}{130,64,113}
+\definecolor{s2}{RGB}{44,109,156}
+\definecolor{s3}{RGB}{84,130,43}
+\definecolor{s4}{RGB}{231,117,46}
+\definecolor{s5}{RGB}{180,66,68}
+
+% Critic
+\colorlet{del}{s5}
+\colorlet{add}{s3}
+\colorlet{hlh}{s4}
+\colorlet{not}{s1}
+
+% Accent color
+\colorlet{accent}{s2}
+
+% Title background
+\definecolor{bg}{RGB}{218, 228, 236}
+
+
+\usepackage[hidelinks,unicode=true]{hyperref}
+\usepackage{etoolbox}
+
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+
+\usepackage{adjustbox}
+
+
+% Fonts
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textgreek}
+\usepackage[greek,english]{babel}
+\usepackage[activate={true,nocompatibility},final=true,kerning=true,spacing=true,tracking=true,shrink=30,stretch=30,factor=0]{microtype}
+
+\usepackage{libertine}
+\usepackage{libertinust1math}
+\usepackage[T1]{fontenc}
+\renewcommand*\ttdefault{txtt}
+
+\usepackage[nooneline]{caption}
+\captionsetup{
+  font={small},
+  labelfont={bf},
+  format=plain,
+  labelsep=quad}
+
+% Spacing
+\usepackage{setspace}
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0em}
+
+\input{.plmt/plmt-marks.tex}
+
+\usepackage{booktabs, tabularx, longtable}
+\usepackage{csquotes}
+
+% Geometry block
+\usepackage[includemp,
+            letterpaper,
+            top=1.2in,
+            bottom=2.510cm,
+            inner=0.9in,
+            outer=0.5in,
+            marginparwidth=2in,
+            marginparsep=0.5in]{geometry}
+
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\renewcommand\UrlFont{\rmfamily\bfseries}
 
 \usepackage[footnote]{snotez}
 \setsidenotes{text-mark-format=\textsuperscript{\normalfont#1},
@@ -45,66 +147,14 @@
 {\normalfont\itshape\sffamily}{(\thesubsubsection)}{1em}{}
 
 \begin{document}
+\thispagestyle{firstpage}
 
-\begin{titlepage}
-
-\newgeometry{left=6cm}
-
-\definecolor{titlepage-color}{HTML}{F6F6F6}
-\newpagecolor{titlepage-color}\afterpage{\restorepagecolor}
 \newcommand{\colorRule}[3][black]{\textcolor[HTML]{#1}{\rule{#2}{#3}}}
-\begin{flushleft}
-\noindent
-\\[-1em]
-\color[HTML]{4F4F4F}
-\makebox[0pt][l]{\colorRule[6F6F6F]{1.3\textwidth}{2pt}}
-\par
-\noindent
-
-{ \setstretch{1.4}
-\vfill
 \noindent {\huge \textbf{\textsf{$title$}}}
 \vskip 2em
+\makebox[0pt][l]{\colorRule[CCCCCC]{2.0\textwidth}{0.5pt}}
+\vskip 2em
 \noindent
-{\large
-$if(author)$
-\begin{flushleft}
-$for(author)$
-$if(author.orcid)$
-\href{http://orcid.org/$author.orcid$}{$author.given$ $author.family$}
-$else$
-\mbox{$author.given$ $author.family$}
-$endif$
-$sep$\quad
-$endfor$
-\end{flushleft}
-\bigskip
-$endif$
-\vfill
-}
-
-{\ccby}\\
-{\emph{This work is licensed under a %
-Creative Commons Attribution 4.0 Unported License.}}%
-\\
-\textsf{\today}}
-\end{flushleft}
-\end{titlepage}
-\restoregeometry
-
-\thispagestyle{empty}
-
-$if(abstract)$
-\textbf{Abstract}:\,$abstract$
-\vskip 1em
-$endif$
-$if(keyword)$
-{\small{\bfseries Keywords}:
-$for(keyword)$$keyword$ $sep$ - $endfor$\vskip 4em
-}
-$endif$
-
-\vfill
 
 $if(author)$
 \begin{flushleft}
@@ -115,23 +165,37 @@ $else$
 \mbox{$author.given$ $author.family$}
 $endif$
 $if(author.affiliations)$
-~\emph{$for(author.affiliations)$$author.affiliations$$sep$,$endfor$}
+\,\textsuperscript{$for(author.affiliations)$$author.affiliations$$sep$,$endfor$}
 $endif$
 $sep$\quad
 $endfor$
 \end{flushleft}
-\bigskip
 $endif$
 
-$if(affiliation)$
-\small
-$for(affiliation)$
-\textbf{$affiliation.id$}:~$affiliation.text$$sep$;\quad$endfor$\normalsize$endif$
+$if(affiliation)$\small$for(affiliation)$\textbf{$affiliation.id$}:~$affiliation.text$$sep$;\quad$endfor$\normalsize$endif$
 
-{\small $if(author)$\vskip 1em
+\medskip
+
+$if(keyword)$\marginpar{\vskip 1em\flushright
+{\small{\bfseries Keywords}:\par
+$for(keyword)$$keyword$ $sep$\\$endfor$
+}
+}
+$endif$
+
+$if(abstract)$
+\textbf{Abstract}:\,$abstract$
+\medskip
+$endif$
+
+
+{\small $if(author)$\medskip
 $for(author)$
 $if(author.email)$Correspondence to $author.given$ $author.family$ -- \texttt{$author.email$}$endif$$endfor$$endif$}
-\cleardoublepage
+
+\vskip 2em
+\makebox[0pt][l]{\colorRule[CCCCCC]{2.0\textwidth}{0.5pt}}
+\vskip 2em
 
 $body$
 

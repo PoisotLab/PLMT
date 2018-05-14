@@ -18,10 +18,6 @@ BIB=references.json
 # CSL is the path to the file with the CSL style to render the references.
 CSL=.plmt/plab.csl
 
-# MARKED is the path with the intermedidate steps applied (mostly, changing the
-# criticmarkup marks into LaTeX markup). Better leave this alone too.
-MARKED= ./.plmt/processed.md
-
 # PFLAGS is the list of pandoc filters and options required to make the
 # documents. You can add some, but it is probably wise not to remove any.
 PFLAGS= --filter pandoc-fignos --filter pandoc-eqnos --filter pandoc-tablenos --listings --bibliography $(BIB) --csl $(CSL)
@@ -40,7 +36,7 @@ AS=preprint
 .PHONY: all output/ help dependencies
 
 dependencies:
-	pip3 install panflute pandoc-fignos, pandoc-tablenos, pandoc-eqnos
+	pip3 install pandoc-fignos, pandoc-tablenos, pandoc-eqnos
 
 
 # By default, we wish only to help!
@@ -60,9 +56,6 @@ all: draft preprint odt latex #> Make all the default outputs
 # command is affected by the `TAG` variable (which version to compare to), and
 # the AS variable (the type of document to render).
 diff: output/diff_$(FILE)_$(TAG)_$(AS).pdf #> Create the pdf with track changes
-
-clean: #> Remove the temporary file
-	rm $(MARKED)
 
 # .metadata.yaml is one of the most important file, since it stores the authors,
 # affiliations, and the abstract (among other things). This file should never be
@@ -86,12 +79,6 @@ jmd2md: $(wildcard $(FILE).Jmd) #> Convert the Jmd file to the md file using Wea
 # of these files, it will compile them to md.
 $(SOURCE): jmd2md rmd2md
 
-# This rule will create the temporary file which is actually used by pandoc,
-# based on the md file and the metadata. This is mostly about handling the
-# critic markup.
-$(MARKED): $(SOURCE) .metadata.yaml
-	@node .plmt/critic.js $< $@
-
 # Output documents
 
 # These are the three core rules -- better to leave them alone.
@@ -111,22 +98,19 @@ odt: output/$(FILE).odt #> Create a LibreOffice document
 
 # These are the actual rules to build the documents -- they will go into the
 # output/ folder.
-output/$(FILE)_preprint.pdf: $(MARKED)
-	pandoc $(MARKED) -o $@ $(PFLAGS) --template ./.plmt/templates/preprint.template .metadata.yaml
+output/$(FILE)_preprint.pdf: $(SOURCE)
+	pandoc $(SOURCE) -o $@ $(PFLAGS) --template ./.plmt/templates/preprint.template .metadata.yaml
 
-output/$(FILE)_draft.pdf: $(MARKED)
-	pandoc $(MARKED) -o $@ $(PFLAGS) --template ./.plmt/templates/draft.template .metadata.yaml
+output/$(FILE)_draft.pdf: $(SOURCE)
+	pandoc $(SOURCE) -o $@ $(PFLAGS) --template ./.plmt/templates/draft.template .metadata.yaml
 
-output/$(FILE).tex: $(MARKED)
-	pandoc $(MARKED) -o $@ $(PFLAGS) --template ./.plmt/templates/raw.template .metadata.yaml
+output/$(FILE).tex: $(SOURCE)
+	pandoc $(SOURCE) -o $@ $(PFLAGS) --template ./.plmt/templates/raw.template .metadata.yaml
 
-output/$(FILE).odt: $(MARKED)
-	pandoc $(MARKED) -o $@ $(PFLAGS) --template ./.plmt/templates/opendocument.template .metadata.yaml
+output/$(FILE).odt: $(SOURCE)
+	pandoc $(SOURCE) -o $@ $(PFLAGS) --template ./.plmt/templates/opendocument.template .metadata.yaml
 
 # Rules for the other documents go here
-
-$(FILE)_plos.pdf: $(MARKED)
-	pandoc $(MARKED) -o $@ $(PFLAGS) --template ./.plmt/templates/plos.template .metadata.yaml
 
 # These are the rules to make the track-changed pdf
 
@@ -142,7 +126,7 @@ revised.md: $(SOURCE)
 # TAG in it.
 output/diff_$(FILE)_$(TAG)_$(AS).pdf: revised.md
 	pandoc $< -o old.tex $(PFLAGS) --template ./.plmt/templates/$(AS).template .metadata.yaml
-	pandoc $(MARKED) -o new.tex $(PFLAGS) --template ./.plmt/templates/$(AS).template .metadata.yaml
+	pandoc $(SOURCE) -o new.tex $(PFLAGS) --template ./.plmt/templates/$(AS).template .metadata.yaml
 	latexdiff old.tex new.tex > diff.tex
 	latexmk -pdf diff.tex
 	latexmk -c
